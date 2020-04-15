@@ -1,0 +1,647 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese');
+
+
+body { 
+    color: #333;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+/* ------ ヘッダーのコーディング ------ */
+/* グローバルナビ */
+.globalnav ul {
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    list-style: none;
+    position: relative;
+    margin: 0;
+    height: 58px;
+}
+
+.globalnav li {
+    padding-right: 15px;
+}
+
+.globalnav li a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 100%;
+    color: #333;
+    height: 58px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.globalnav .nri-icon {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+.globalnav li p {
+    font-weight: bold;
+    margin: 0;
+    line-height: 100%;
+}
+
+.globalnav .icon-menu {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    padding-right: 10px;
+    margin-left: 3%;
+}
+
+.globalnav .icon-menu li {
+    padding-right: 35px;
+    position: relative;
+}
+
+/* パンくずなび */
+.topicPath p {
+    font-size: 12px;
+    color: #999999; 
+    width: 1000px;
+    padding-left: 35px;
+    margin: 0 25% 25px auto;
+}
+
+.topicPath a {
+    text-decoration: none;
+    color: #999999;
+}
+
+/* ヘッダー固定 */
+#pageHead {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    
+}
+
+/* TOP画像？ */
+.MainVisual {
+    position: relative;
+    min-width: 1000px;
+    width: 100%;
+}
+
+.MainVisualText {
+    position: absolute;
+    width: 1000px;
+    left: 0;
+    right: 0;
+    margin: 20px auto;
+}
+
+.MainVisualImage {
+    width: 100%;
+    height: 250px;
+    object-fit: none;
+}
+
+.MainVisualText p {
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.MainVisualText h1 {
+    font-size: 28px;
+    color: #FFFFFF;
+}
+
+/* ------ メインページのコーディング ------ */
+/* ページ */
+#page {
+    min-width: 1000px;
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    top: 60px;
+    z-index: 0;
+    margin-bottom: 130px;
+}
+
+#pageMain {
+    width: 800px;
+    margin: 40px auto;
+}
+
+#page .MainVisual .MainVisualImage {
+    width: 100%;
+    object-fit: cover;
+}
+
+#pageMain .TextTitle {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+#pageMain .TextTitleImage {
+    width: 22px;
+    height: 22px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+    margin-bottom: 3px;
+}    
+
+#MainText p {
+    line-height: 1.88;
+}
+
+/* テキストタイトルのアイコン */
+.MainImage {
+    margin-top: 25px;
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+/* デジタルが...のボタン */
+ .btn {
+    text-align: center;
+    line-height: 1.2;
+    margin: 30px 0;
+    padding-bottom: 30px;
+    font-weight: 100;
+}
+
+.btn p {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0 10px;
+    margin: 15px 0;
+}
+
+.btn a {
+    color: #FFFFFF;
+    border: #005cac solid 1px;
+    background-color: #005cac;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    width: 300px;
+}
+
+.btn a:hover {
+    opacity: 0.8;
+}
+
+.btn a:before {
+    content: '›';
+    color: #FFFFFF;
+    position: absolute;
+    left: 12px;
+    top: 25px;
+    font-size: 20px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.btn img {
+    margin-left: 12px;
+}
+
+/* < MainTextLink > */
+.MainTextLink {
+    margin: 30px 0;
+    display: flex;
+}
+.MainTextLink a {
+    text-decoration: none;
+    color:#0058B3;
+}
+.MainTextLink a:hover {
+    text-decoration: underline;
+}
+
+.MainTextLink .link1:before {
+    content: "";
+    background-image: url("../icon/icon-Left.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    padding-left: 15px;
+    background-position: 0 5px;
+}
+
+.MainTextLink .link2 {
+   margin-left: auto;
+   margin-top: auto;
+}
+
+.MainTextLink .link2:after {
+    content: "";
+    background-image: url("../icon/icon_Right.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    padding-right: 15px;
+    background-position: 0 4px;
+}
+
+/* NRIの強みリスト */
+.contentnav {
+    background-color: #deecf8;
+    width: 100%;
+    position: relative;
+    margin-bottom: 65px;
+}
+
+.contentnav strong {
+    display: inline-block;
+    position: absolute;
+    font-weight: 600;
+    left: 20px;
+    top: 25px;
+}
+
+.contentnav .boxlist {
+    display: inline-block;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.boxlist li {
+    list-style-type: none;
+    float: left;
+    padding-left: 20px;
+}
+
+.boxlist a {
+    text-decoration: none;
+    color:#0058B3;
+    border: #CCCCCC solid 1px;
+    width: 200px;
+    height: 68px;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 19px;
+    background-color: #FFFFFF;
+    position: relative;
+    margin: 0;
+}
+
+.boxlist a::before {
+    content: "";
+    background-image: url("../icon/list-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 9px;
+    left: 10px;
+    position: absolute;
+}
+
+.boxlist a:hover {
+    background-color: #F5F5F5;
+}
+
+.boxlist p {
+    text-align: center;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+.smallbox a {
+    height: 49px;
+}
+
+/* 企業情報リンク覧 */
+.nri-info {
+    width: 1000px;
+    margin: 120px auto 0 auto;
+    border-top: solid #333 2px;
+}
+
+.nri-info h2 {
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: #333 dotted 1px;
+    padding: 5px 0 33px 0;
+}
+
+.nri-info .nri-info-contents p.nri-info-title {
+    font-weight: bold;
+    margin: 33px 0 5px 0;
+}
+
+.nri-info .nri-info-contents .nri-policy,
+.nri-info .nri-info-contents .nri-guide,
+.nri-info .nri-info-contents .nri-forte,
+.nri-info .nri-info-contents .nri-office,
+.nri-info .nri-info-contents .nri-business-guide {
+    display: flex;
+    border-bottom: dotted #333 1px;
+    margin-bottom: 33px;
+}
+
+.nri-info .nri-info-contents ul {
+    width: 25%;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.nri-info .nri-info-contents li {
+    padding-left: 15px;
+    list-style-type: none;
+    position: relative;
+}
+
+.nri-info .nri-info-contents ul:first-child {
+    padding-left: 0;
+}
+
+.nri-info .nri-info-contents a {
+    font-size: 14px;
+    text-decoration: none;
+    color:#0058B3;
+    display: inline-block;
+    width: 220px;
+    margin-bottom: 20px;
+}
+
+.nri-info .nri-info-contents li::before {
+    content: "";
+    background-image: url("../icon/list-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.nri-info .nri-info-contents a:hover {
+    text-decoration: underline;
+}
+
+/* 前のページに戻る */
+.nri-info .page-back {
+    position: relative;
+}
+
+.nri-info .page-back a {
+    text-decoration: none;
+    color:#0058B3;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.nri-info .page-back a:hover {
+    text-decoration: underline;
+}
+
+.nri-info .page-back p {
+    padding-left: 20px;
+}
+
+.nri-info .page-back p::before {
+    content: "";
+    background-image: url("../icon/icon-Left.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    left: 0;
+    top: 25px;
+}
+
+/* FollowUSとボタンたち */
+.sns-follow-btn {
+    border-top: solid #999999 2px;
+    border-bottom: solid #999999 2px;
+    margin: 60px 0 40px 0;
+    padding: 3px 0;
+}
+
+.sns-follow-btn p.follow-us {
+    font-size: 20px;
+    font-family: arial;
+    font-weight: bold;
+}
+
+.sns-follow-btn ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.sns-follow-btn li {
+    list-style-type: none;
+    padding: 0 20px 0 20px;
+    display: block;
+}    
+
+/* ------ フッターのコーディング ------ */
+/* フッターのリンクたち */
+#footer .footer-nav .nav-link {
+    display: flex;
+    padding-bottom: 50px;
+    margin-top: 25px;
+}
+
+#footer .footer-nav .nav-link ul {
+    padding-left: 0px;
+    width: 20%;
+    margin: 0 auto;
+}
+
+#footer .footer-nav .nav-link ul:last-child {
+    margin-right: 5%;
+}
+
+#footer .footer-nav .nav-link ul:first-child {
+    margin-left: 5%;
+}
+
+#footer .footer-nav .nav-link li {
+    list-style-type: none;
+    padding: 10px 5px;
+    position: relative;
+}
+
+#footer .footer-nav .nav-link a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #808080;
+    font-weight: lighter;
+}
+
+#footer .footer-nav .nav-link a:hover {
+    text-decoration: underline;
+}
+
+#footer .footer-nav .nav-link li::before {
+    content: "";
+    background-image: url("../icon/list-icon.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    left: -10px;
+    top: 18px;
+}
+
+#footer .footer-nav .nav-link strong {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+/* フッターナビリンク margin調整 */
+#footer .footer-nav {
+    border-bottom: solid #CCCCCC 1px;
+    margin-bottom: 30px;
+}
+
+/* フッタープライバシーリンクたち */
+#pageFoot {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#pageFoot .privacy ul {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+#pageFoot .privacy li {
+    list-style-type: none;
+    padding: 0 15px;
+    position: relative;
+}
+
+#pageFoot .privacy p {
+    font-size: 12px;
+    color: #999999;
+    margin: 0;
+    line-height: 1;
+}
+
+#pageFoot .privacy a {
+    color: #999999;
+    text-decoration: none;
+}
+
+#pageFoot .privacy a:hover {
+    text-decoration: underline;
+}
+
+#pageFoot .privacy li.icon {
+    border-left: solid #999999 1px;
+}
+
+#pageFoot .privacy li:last-child {
+    border-left: solid #999999 1px;
+}
+
+/* ------ アイテム類の作成 ------ */
+/* ハンバーガーメニュー */
+.hamburger {
+    background-color: #000;
+    width: 20px;
+    height: 2px;
+    top: -3px;
+    display: block;
+    position: absolute;
+    content: "";
+    right: 10px;
+}
+
+.hamburger::before {
+    background-color: #000;
+    width: 20px;
+    height: 2px;
+    display: block;
+    position: absolute;
+}
+
+.hamburger::after {
+    background-color: #000;
+    width: 20px;
+    height: 2px;
+    
+    display: block;
+    position: absolute;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: "";
+}
+
+.hamburger::before {
+    top: 8px;
+}
+
+.hamburger::after {
+    top: -8px;
+}
+.hamburger a {
+    margin: 0;
+    display: inline-block;
+}
+
+/* SNSボタン(Share) */
+.share {
+    font-size: 12px;
+    font-family: arial;
+    font-weight: bold;
+    color: #999999;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    width: 800px;
+    margin: 30px auto;
+    padding-left: 0;
+}
+
+.share-btn p {
+    position: absolute;
+    right: 155px;
+    top: -5px;
+}
+
+.share-btn li {
+    list-style-type: none;
+}
+
+.share-btn a {
+    display: inline-block;
+    margin: 0 11px;
+    height: 26px;
+}
+
+/* コピーライト */
+#pageFoot .copyright {
+    font-size: xx-small;
+    margin: 0 15px;
+}
