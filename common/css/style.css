@@ -21,13 +21,15 @@ body {
 }
 
 .globalnav li {
-    padding-right: 15px;
+    padding-right: 17px;
 }
 
 .globalnav li a {
     display: inline-block;
     text-decoration: none;
     font-size: 14px;
+    font-weight: bold;
+    font-feature-settings: "palt";
     line-height: 100%;
     color: #333;
     height: 58px;
@@ -54,7 +56,7 @@ body {
     align-items: center;
     padding-top: 5px;
     padding-right: 10px;
-    margin-left: 3%;
+    margin-left: 2%;
 }
 
 .globalnav .icon-menu li {
