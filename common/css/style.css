@@ -229,7 +229,7 @@ body {
 
 .MainTextLink .link1:before {
     content: "";
-    background-image: url("../icon/icon-Left.jpg");
+    background-image: url("../image/icon-Left.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     width: 20px;
@@ -245,7 +245,7 @@ body {
 
 .MainTextLink .link2:after {
     content: "";
-    background-image: url("../icon/icon_Right.jpg");
+    background-image: url("../image/icon_Right.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     width: 20px;
@@ -302,7 +302,7 @@ body {
 
 .boxlist a::before {
     content: "";
-    background-image: url("../icon/list-icon.svg");
+    background-image: url("../image/list-icon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 9px;
@@ -381,7 +381,7 @@ body {
 
 .nri-info .nri-info-contents li::before {
     content: "";
-    background-image: url("../icon/list-icon.svg");
+    background-image: url("../image/list-icon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 8px;
@@ -417,14 +417,14 @@ body {
 
 .nri-info .page-back p::before {
     content: "";
-    background-image: url("../icon/icon-Left.svg");
+    background-image: url("../image/icon-Left.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 8px;
     height: 8px;
     position: absolute;
     left: 0;
-    top: 25px;
+    top: 22px;
 }
 
 /* FollowUSとボタンたち */
@@ -495,14 +495,14 @@ body {
 
 #footer .footer-nav .nav-link li::before {
     content: "";
-    background-image: url("../icon/list-icon.svg");
+    background-image: url("../image/list-icon.svg");
     background-size: contain;
     background-repeat: no-repeat;
     width: 8px;
     height: 8px;
     position: absolute;
     left: -10px;
-    top: 18px;
+    top: 15px;
 }
 
 #footer .footer-nav .nav-link strong {
