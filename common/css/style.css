@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese');
+
+body {
+    width: 100%;
+    color: #333;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+}
+
+/* ------ headerコーディング ------ */
+/* headerグローバルナビ */
+.globalnav {
+    background-color: #F7F7F7;
+    width: 100%;
+    display: block;
+}
+
+.guide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    
+    margin: 0 auto;
+}
+@media screen and (min-width: 1020px) {
+    .guide {
+      width: 1020px;
+      margin: 0 auto;
+    }
+}
+
+.guide p {
+    font-size: 12px;
+    margin: 10px 0;
+    line-height: 100%;
+}
+
+.guide ul.guide-link {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    
+}
+
+.guide .guide-link li {
+    list-style-type: none;
+    line-height: 100%;
+   
+}
+
+.guide .guide-link li.boder  a {
+    border-left: #333 solid 1px;
+}
+
+.guide .guide-link a {
+    text-decoration: none;
+    color: #333;
+    font-size: 11px;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.guide .guide-link p {
+    line-height: 1;
+    
+}
