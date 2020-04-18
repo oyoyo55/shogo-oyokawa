@@ -31,7 +31,7 @@ body {
 }
 
 .guide p {
-    font-size: 12px;
+    font-size: 11px;
     margin: 10px 0;
     line-height: 100%;
 }
@@ -45,23 +45,39 @@ body {
 
 .guide .guide-link li {
     list-style-type: none;
-    line-height: 100%;
-   
+    
+    display: inline-block;
 }
+
+.guide .guide-link li.nkou-icon {
+    background-image: url(../image/header_mainlogo_pc01.png);
+    background-repeat: no-repeat;
+    background-position: 8px 5px;
+    background-color: #DDDDDD;
+}
+.guide .guide-link li.nkou-icon a {
+    padding-left: 30px;
+    
+}
+
 
 .guide .guide-link li.boder  a {
     border-left: #333 solid 1px;
+    
 }
 
 .guide .guide-link a {
     text-decoration: none;
     color: #333;
     font-size: 11px;
-    display: inline-block;
-    padding: 0 10px;
+    display: block;
+    padding: 0 9px;
+}
+.guide .guide-link a:hover {
+    text-decoration: underline;
 }
 
 .guide .guide-link p {
     line-height: 1;
-    
+    display: inline-block;
 }
