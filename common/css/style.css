@@ -1,15 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese');
+
+@font-face {
+    font-family: 'AxisStd-Light';
+    src: url('../font/ca94208f-21dd-4dc8-ab7c-057d8dbfcccb.woff2') format('woff');
+}
+@font-face {
+    font-family: 'AxisStd-Regular';
+    src: url('../font/d226afef-6536-4b18-9b28-defffcc4baae.woff2') format('woff');
+}
 
 body {
-    width: 100%;
+    
     color: #333;
-    font-family: 'Noto Sans JP', sans-serif;
     margin: 0;
 }
 
 /* ------ headerコーディング ------ */
-/* headerグローバルナビ */
-.globalnav {
+/* header-TOPグローバルナビ */
+
+.top-nav {
     background-color: #F7F7F7;
     width: 100%;
     display: block;
@@ -19,21 +27,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
-    
+    font-family: 'AxisStd-Regular';
+    width: 1040px;
     margin: 0 auto;
+    padding: 0 10px;
 }
-@media screen and (min-width: 1020px) {
-    .guide {
-      width: 1020px;
-      margin: 0 auto;
-    }
-}
+
 
 .guide p {
     font-size: 11px;
     margin: 10px 0;
     line-height: 100%;
+    letter-spacing: 0.05em;
 }
 
 .guide ul.guide-link {
@@ -45,7 +50,6 @@ body {
 
 .guide .guide-link li {
     list-style-type: none;
-    
     display: inline-block;
 }
 
@@ -70,8 +74,9 @@ body {
     text-decoration: none;
     color: #333;
     font-size: 11px;
+    letter-spacing: 0.05em;
     display: block;
-    padding: 0 9px;
+    padding: 0 8px;
 }
 .guide .guide-link a:hover {
     text-decoration: underline;
@@ -80,4 +85,186 @@ body {
 .guide .guide-link p {
     line-height: 1;
     display: inline-block;
+}
+
+/* header-main */
+
+.header-main {
+    font-family: 'AxisStd-Regular';
+    width: 1040px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.header-main .nkou-info {
+    margin-top: 20px;
+    display: flex;
+    position: relative;
+}
+
+
+
+.header-main .nkou-info .tel-sns {
+    width: 211px;
+    position: absolute;
+    right: 140px;
+    top: -8px;
+    display: flex;
+}
+
+.header-main .nkou-info .tel-sns p {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    font-family: 'AxisStd-Regular';
+    text-align: center;
+    margin: 0 0 0 13px;
+}
+
+.header-main .nkou-info .tel-sns .sns-btn ul {
+    display: flex;
+    padding-left: 35px;
+}
+
+.header-main .nkou-info .tel-sns .sns-btn li {
+    list-style-type: none;
+    padding-right: 8px;
+}
+
+/* headerグローバルナビ */
+.globalnav {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.globalnav-left ul {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+}
+.globalnav-left li {
+    list-style-type: none;
+    line-height: 1.1;
+    margin-right: 1px;
+    display: block;
+    font-size: 15px;
+    font-family: 'AxisStd-Regular';
+    
+}
+.globalnav-left a {
+    text-decoration: none;
+    color: #1f286f;
+    letter-spacing: 0.15em;
+    display: block;
+    width: 158px;
+    height: 31px;
+    text-align: center;
+    position: relative;
+}
+
+.globalnav-left li.current a.about::after {
+    content: "";
+    background-image: url("../image/global_nav_link_01.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 10px;
+    width: 76px;
+    left: 43px;
+    top: 20px;
+    background-position: 50% 100%;
+}
+
+.globalnav-left a.net::after {
+    content: "";
+    background-image: url("../image/global_nav_link_02.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 10px;
+    width: 62px;
+    top: 20px;
+    left: 49px;
+}
+
+.globalnav-left a.commute::after {
+    content: "";
+    background-image: url("../image/global_nav_link_03.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 10px;
+    width: 96px;
+    top: 20px;
+    left: 30px;
+}
+
+.globalnav-left a.alliance::after {
+    content: "";
+    background-image: url("../image/global_nav_link_04.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 10px;
+    width: 90px;
+    top: 20px;
+    left: 34px;
+}
+
+/* currentページ、リンクモーション無効 */
+.globalnav-left li.current a {
+    pointer-events: none;
+}
+
+
+/* グローバルナビの枠の作成 */
+.globalnav-left li {
+    border-left: solid 1px #DDDDDD;
+}
+.globalnav-left li:last-child {
+    border-right: solid 1px #DDDDDD;
+}
+
+.globalnav-left a:hover::after {
+    background-position: 50% bottom;
+}
+
+/* グローバルナビ右側 */
+.globalnav-right ul {
+    display: flex;
+    margin: 0;
+    padding-left: 35px;
+}
+.globalnav-right li {
+    list-style-type: none;
+    border: solid 1px #333;
+    margin-left: 10px;
+}
+.globalnav-right a {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'AxisStd-Regular';
+    color: #1f286f;
+    width: 170px;
+    display: block;
+    text-align: center;
+    padding: 9px 0;
+    position: relative;
+}
+
+.globalnav-right a::after {
+    content: "";
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 9px;
+    width: 7px;
+    top: 15px;
+    right: 10px;
+}
+
+.globalnav-right a:hover {
+    background-color: #1f286f;
+    color: #FFFFFF;
+
+}
+.globalnav-right a:hover::after {
+    background-image: url("../image/icon_right_white01.png");
 }
