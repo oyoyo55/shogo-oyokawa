@@ -114,10 +114,11 @@ body {
 
 .header-main .nkou-info .tel-sns p {
     font-size: 11px;
+    color: #8d959c;
     letter-spacing: 0.05em;
     font-family: 'AxisStd-Regular';
     text-align: center;
-    margin: 0 0 0 13px;
+    margin: 3px 0 0 13px;
 }
 
 .header-main .nkou-info .tel-sns .sns-btn ul {
@@ -131,10 +132,11 @@ body {
 }
 
 /* headerグローバルナビ */
-.globalnav {
+.globalnav-current {
     margin-top: 25px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .globalnav-left ul {
@@ -268,3 +270,91 @@ body {
 .globalnav-right a:hover::after {
     background-image: url("../image/icon_right_white01.png");
 }
+
+/* ------ mainページ ------ */
+/* N高about-menu(２段あるやつ) */
+.nkou-about-menu {
+    
+}
+
+.nkou-image .nkou-about-menu  {
+   position: relative;
+    margin: 21px auto;
+    padding: 8px 0;
+    width: 100%;
+    background-color: #181836;
+}
+
+.nkou-image .nkou-about-menu ul {
+    width: 1040px;
+    display: flex;
+    padding: 5px 5px 0 5px;
+    margin: 0 auto;
+}
+
+.nkou-image .nkou-about-menu li {
+    list-style-type: none;
+    position: relative;
+    
+    padding-left: 27px;
+}
+.nkou-image .nkou-about-menu  .first-stage li:first-child {
+    padding-left: 0;
+}
+
+.nkou-image .nkou-about-menu li.icon::before {
+    content: "";
+    background-image: url("../image/icon_backslash_black01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    top: 8px;
+    left: 8px;
+    display: block;
+}
+
+.nkou-image .nkou-about-menu .first-stage li:last-child {
+    
+}
+
+.nkou-image .nkou-about-menu a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-family: 'AxisStd-Light';
+    letter-spacing: 0.1em;
+    display: inline-block;
+    padding: 8px 8px;
+    margin: 30px;
+}
+.nkou-image .nkou-about-menu a:first-child {
+    margin: 0;
+}
+
+.nkou-image .nkou-about-menu ul.second-stage {
+    padding-left: 27px;
+}
+
+.nkou-image .nkou-about-menu a:hover { 
+    background-color: #FFFFFF;
+    color: #181836;
+}
+.nkou-image {
+    position: relative;
+}
+.globalnav-current::after {
+    content: "";
+    position: absolute;
+    top: 51px;
+    left: 75px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 6px 9px 6px;
+    border-color: transparent transparent #181836 transparent;
+
+}
+
+
