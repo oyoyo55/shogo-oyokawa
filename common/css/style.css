@@ -279,7 +279,7 @@ body {
 
 .nkou-image .nkou-about-menu  {
    position: relative;
-    margin: 21px auto;
+    margin: 21px auto 0 auto;
     padding: 8px 0;
     width: 100%;
     background-color: #181836;
@@ -315,9 +315,6 @@ body {
     display: block;
 }
 
-.nkou-image .nkou-about-menu .first-stage li:last-child {
-    
-}
 
 .nkou-image .nkou-about-menu a {
     text-decoration: none;
@@ -354,7 +351,75 @@ body {
     border-style: solid;
     border-width: 0 6px 9px 6px;
     border-color: transparent transparent #181836 transparent;
+}
 
+/* main N高の写真 */
+.main-image {
+   width: 100%;
+   object-fit: cover;
+   position: relative;
+}
+
+.about-pic-text {
+    width: 100%;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.about-pic-text h1 {
+    font-size: 52px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    line-height: 94px;
+    font-family: 'AxisStd-Light';
+    color: #FFFFFF;
+    margin: 0;
+   
+    position: relative;
+}
+.about-pic-text h1::after {
+    content: "";
+    border-bottom: solid 1px #FFFFFF;
+    position: absolute;
+    height: 1px;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
 }
 
 
+.about-pic-text span {
+    margin-top: 30px;
+    display: inline-block;
+}
+
+/* パンくずナビ */
+
+.topic-path {
+    width: 1040%;
+    margin: 0 auto;
+    padding: 0 10px;
+    border-bottom: solid 1px #EEEEEE;
+    margin-bottom: 50px;
+}
+.topic-path ul {
+    display: flex;
+    padding-left: 0;
+}
+
+.topic-path li {
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 0.05em;
+    font-family: 'AxisStd-Light';
+}
+.topic-path a {
+    text-decoration: none;
+    color: #36538d;
+    line-height: 25px;
+}
