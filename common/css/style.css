@@ -400,15 +400,17 @@ body {
 /* パンくずナビ */
 
 .topic-path {
-    width: 1040%;
-    margin: 0 auto;
-    padding: 0 10px;
+    width: 100%;
+    
     border-bottom: solid 1px #EEEEEE;
     margin-bottom: 50px;
 }
 .topic-path ul {
     display: flex;
-    padding-left: 0;
+    width: 1040px;
+    margin: 0 auto;
+    padding: 17px 10px;
+    
 }
 
 .topic-path li {
@@ -422,4 +424,183 @@ body {
     text-decoration: none;
     color: #36538d;
     line-height: 25px;
+}
+
+/* ------ 本文 ------*/
+/* maintext */
+.about-MainText {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 0 10px 0 10px;
+}
+.about-MainText .MainText {
+    text-align: center;
+}
+
+.about-MainText .MainText h1 {
+    font-size: 33px;
+    font-weight: 400;
+    font-family: 'AxisStd-Light';
+    letter-spacing: 0.2em;
+    line-height: 59px;
+    
+}
+.about-MainText .MainText h3 {
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'AxisStd-Regular';
+    letter-spacing: 0.1em;
+    line-height: 40px;
+    position: relative;
+}
+.about-MainText .MainText h3::after {
+    content: "";
+    border-bottom: #272727 1px solid;
+    position: absolute;
+    height: 1px;
+    width: 210px;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.about-MainText .MainText p {
+    line-height: 29px;
+    font-family: 'AxisStd-Light';
+    letter-spacing: 0.05em;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: left;
+}
+
+
+
+/* 教育方針から下 */
+.about-MainText .strong-p h1.title {
+    font-size: 26px;
+    font-family: 'AxisStd-Regular';
+    line-height: 60px;
+    letter-spacing: 0.05em;
+    width: 300px;
+    border-bottom: solid 2px #272727;
+    margin-bottom: 0;
+}
+
+.about-MainText .nkou-policy ul {
+    padding-left: 0;
+}
+.about-MainText .nkou-policy li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.about-MainText .nkou-policy h2 {
+    font-size: 24px;
+    font-family: 'AxisStd-Regular';
+    width: 74px;
+    text-align-last: justify;
+}
+
+.about-MainText .nkou-policy p.policy {
+    font-size: 19px;
+    line-height: 50px;
+    font-family: 'AxisStd-Light';
+    padding: 0 15px 0 15px;
+    border-left: solid 1px #272727;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.nkou-policy {
+    border-top: 1px solid #272727;
+    margin: 0;
+    display: flex;
+    justify-content: last baseline;
+    position: relative;
+}
+.nkou-policy img {
+    position: absolute;
+    margin-top: 40px;
+    right: -14%;
+}
+
+/* N STANDARDSボタン */
+.strong-p .standards-link a {
+    width: 605px;
+    display: flex;
+    background-color: #F7F7F7;
+    padding: 30px 35px 30px 40px;
+    margin: 100px auto;
+    border: solid 1px #DDDDDD;
+    text-decoration: none;
+    color: #272727;
+}
+
+.strong-p .standards-link a:hover .read-more,
+.strong-p .standards-link a:hover .standards-link-btn {
+    opacity: 0.7;
+}
+
+.strong-p .standards-link-text {
+    margin-left: 20px;
+}
+.strong-p .standards-link-text h3 {
+    font-size: 22px;
+    line-height: 40px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+    margin: 0;
+}
+.strong-p .standards-link-text p {
+    font-size: 16px;
+    line-height: 29px;
+    letter-spacing: 0.6px;
+    font-family: 'AxisStd-Light';
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.strong-p .standards-link-text img.read-more {
+    padding: 20px;
+    display: block;
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: 5px 10px;
+    background-position: 0 20px;
+}
+
+/* N高の魅力 */
+.strong-p .nkou-charm {
+    border-top: #272727 1px solid;
+}
+
+.strong-p .nkou-charm h2 {
+    font-size: 25px;
+    line-height: 45px;
+    font-family: 'AxisStd-Regular';
+    letter-spacing: 0.05em;
+    width: 480px;
+    border-bottom: #272727 1px solid;
+    margin: 0;
+    padding: 0 0 25px 0;
+}
+
+.strong-p .nkou-charm p {
+    line-height: 29px;
+    font-family: 'AxisStd-Light';
+    letter-spacing: 0.02em;
+    width: 480px;
+    margin-top: 10px;
+}
+.strong-p .nkou-charm p.small {
+    font-size: 12px;
+    line-height: 22px;
+    font-family: 'AxisStd-Light';
+}
+
+.strong-p .nkou-charm .nkou-charm-A,
+.strong-p .nkou-charm .nkou-charm-B {
+    display: flex;
+    justify-content: space-between;
+    margin: 75px 0;
 }
