@@ -747,6 +747,15 @@ body {
 
 
 /* ボックスのリンク */
+.Basic-ground-B {
+    background-color: #F7F7F7;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: solid 1px #DDDDDD;
+    display: inline-block;
+}    
 .box-link {
     width: 1040px;
     margin: 70px auto 80px auto;
@@ -805,9 +814,11 @@ body {
 }
 .box-link a:hover {
     background-image: url("../image/border_black.png");
-    background-color:rgba(255,255,255,0.9);
+    background-color:rgba(255,255,255,0.8);
     background-blend-mode:lighten;
-    opacity: 0.7;
+}
+.box-link li:hover {
+    opacity: 0.6;
 }
 .box-link a {
     position: relative;
@@ -822,4 +833,246 @@ body {
     width: 7px;
     top: 50%;
     right: 25px;
+}
+
+/* footerコーディング */
+/* N高についてさらに詳細を知りたい方はこちら */
+
+#footer .background-img {
+    background-image: url("../image/footer_bg.png");
+    margin-top: 80px;
+}
+.nkou-contact {
+    width: 1040px;
+    margin:0 auto;
+    text-align: center;
+    padding: 35px 0 5px 0;
+}
+
+.nkou-contact a {
+    text-decoration: none;
+}
+.nkou-contact li {
+    list-style-type: none;
+}
+.nkou-contact h3 {
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.2em;
+    font-family: 'AxisStd-Regular';
+    margin: 0;
+}
+
+.nkou-contact .nkou-contact-link {
+    display: flex;
+    justify-content: center;
+}
+
+.nkou-contact .nkou-contact-link ul{
+    padding-left: 0;
+    margin: 20px 0;
+}
+.nkou-contact .nkou-contact-link ul a {
+    color: #272727;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+    background-color: #FFFFFF;
+    display: inline-block;
+    width: 258px;
+    padding: 14px 0;
+    position: relative;
+}
+.nkou-contact .nkou-contact-link ul a.book::before {
+    content: "";
+    background-image: url("../image/icon_book_black.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 29px;
+    width: 29px;
+    top: 14px;
+    left: 20px;
+}
+.nkou-contact .nkou-contact-link ul a.balloon::before {
+    content: "";
+    background-image: url("../image/icon_balloon_black.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 29px;
+    width: 29px;
+    top: 14px;
+    left: 20px;
+}
+.nkou-contact .nkou-contact-link ul a::after {
+    content: "";
+    background-image: url("../image/icon_right_black01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 13px;
+    width: 7px;
+    top: 20px;
+    right: 15px;
+}
+.nkou-contact .nkou-contact-link li {
+    padding: 7px 0;
+}
+
+.nkou-contact .nkou-contact-tel {
+    display: block;
+    margin: 35px 0  0 40px;
+}
+.nkou-contact .nkou-contact-tel a.web-contact {
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+    display: inline-block;
+    border: solid 1px #FFFFFF;
+    padding: 10px 36px;
+    margin: 7px 0 0 40px;
+    position: relative;
+}
+.nkou-contact .nkou-contact-tel a.web-contact::after {
+    content: "";
+    background-image: url("../image/icon_right_white01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 9px;
+    width: 7px;
+    top: 15px;
+    right: 10px;
+}
+
+.nkou-contact .nkou-contact-tel p {
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+    margin: 5px 0 10px 40px;
+}
+.nkou-contact .nkou-contact-link ul a:hover,
+.nkou-contact .nkou-contact-tel a.tel-link:hover {
+    opacity: 0.7;
+}
+.nkou-contact .nkou-contact-tel a.web-contact:hover {
+    text-decoration: underline;
+}
+
+.topic {
+    width: 1040px;
+    margin: 0 auto;
+    padding: 25px 0;
+    border-bottom: solid 1px #EEEEEE;
+}
+.topic ul {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+.topic a {
+    font-size: 14px;
+    line-height: 28px;
+    letter-spacing: 0.05em;
+    font-family: 'AxisStd-Regular';
+    text-decoration: none;
+    color: #272727;
+    display: inline-block;
+    width: 257px;
+    border: solid 1px #272727;
+    text-align: center;
+    padding: 7px 0;
+    margin: 0 17px;
+    position: relative;
+}
+.topic a::after {
+    content: "";
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 10px;
+    width: 7px;
+    top: 16px;
+    right: 13px;
+}
+.topic a:hover {
+    color: #FFFFFF;
+    background-color: #272727;
+}
+.topic a:hover::after {
+    background-image: url("../image/icon_right_white01.png");
+}
+.topic li {
+    list-style-type: none;
+}
+
+.External-part {
+    width: 1040px;
+    margin: 40px auto;
+}
+.External-part p {
+    line-height: 22px;
+    font-family: 'AxisStd-Light';
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+.External-part a {
+    text-decoration: none;
+    color: #272727;
+    display: inline-block;
+    background-color: #FFFFFF;
+    width: 476px;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+}
+.External-part a::after {
+    content: "";
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 10px;
+    width: 7px;
+    top: 45px;
+    right: 22px;
+}
+.External-part a:hover {
+    background-image: url("../image/border_black.png");
+    background-color:rgba(255,255,255,0.7);
+    background-blend-mode:lighten;
+}
+.External-part li:hover {
+    opacity: 0.7;
+}
+.External-part a.box-1 {
+    padding: 17px 0 13px 0;
+}
+.External-part ul {
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+}
+.External-part li {
+    list-style-type: none;
+    background-image: url("../image/border_black.png");
+    background-repeat: repeat;
+    padding: 6px;
+    margin: 15px 16px;
+}
+.External-part span {
+    display: block;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Light';
+    padding: 7px 0;
 }
