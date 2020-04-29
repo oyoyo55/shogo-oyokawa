@@ -514,13 +514,12 @@ body {
     border-top: 1px solid #272727;
     margin: 0;
     display: flex;
-    justify-content: last baseline;
-    position: relative;
+    justify-content: space-between;
+    
 }
 .nkou-policy img {
-    position: absolute;
     margin-top: 40px;
-    right: -14%;
+    object-fit: cover;
 }
 
 /* N STANDARDSボタン */
@@ -556,7 +555,7 @@ body {
     line-height: 29px;
     letter-spacing: 0.6px;
     font-family: 'AxisStd-Light';
-    margin: 10px 0;
+    margin: 10px 0 20px 0;
     text-align: justify;
 }
 
@@ -603,4 +602,224 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 75px 0;
+}
+
+
+/* Basic Program */
+.Basic-ground {
+    background-color: #F7F7F7;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top: solid 1px #DDDDDD;
+    border-bottom: solid 1px #DDDDDD;
+   
+}
+.Basic-Program {
+    width: 1040px;
+    margin: 70px auto;
+}
+.Program-top-text {
+    text-align: center;
+}
+.Program-top-text h1 {
+    font-size: 33px;
+    font-family: 'AxisStd-Regular';
+    line-height: 59px;
+    letter-spacing: 0.04em;
+    position: relative;
+    
+}
+.Program-top-text h1::after {
+    content: "";
+    border-bottom: solid 1px #272727;
+    position: absolute;
+    height: 1px;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+}
+.Program-top-text p {
+    font-family: 'AxisStd-Light';
+    line-height: 29px;
+    letter-spacing: 0.02em;
+    padding-top: 5px;
+}
+
+/* Basic Program 写真とテキストのところ */
+.Program-content {
+    display: flex;
+    margin-bottom: 25px;
+    padding: 45px 0 40px 0;
+}
+.Program-content-A .Program-content a {
+    text-decoration: none;
+    margin-left: 35px;
+}
+.Program-content-B .Program-content a {
+    text-decoration: none;
+    margin-right: 35px;
+}
+.Program-content a {
+    margin-top: 3px;
+}
+.Program-content a.no-img {
+    margin-top: 0;
+}
+.Program-content a:hover {
+    opacity: 0.7;
+}
+
+.Program-content .Program-content-text {
+    color: #272727;
+}
+
+.Program-content .Program-content-text h2 {
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+    margin: 15px 0;
+}
+.Program-content .no-img h2 {
+    margin-top: 0;
+}
+.Program-content .Program-content-text span {
+    font-size: 13px;
+}
+
+
+.Program-content .Program-content-text p {
+    line-height: 29px;
+    letter-spacing: 0.6px;
+    font-family: 'AxisStd-Light';
+    text-align: justify;
+    padding-top: 2px;
+}
+.Program-content-A .Program-content-text small {
+    font-size: 11px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    font-family: 'AxisStd-Light';
+    display: block;
+    padding-bottom: 15px;
+}
+.Program-content-B .Program-content-text small {
+    font-size: 13px;
+    line-height: 23px;
+    letter-spacing: 0.04em;
+    font-family: 'AxisStd-Light';
+    display: block;
+}
+.Program-content .Program-content-text img.Basic-icon {
+    display: inline-block;
+    padding: 9px 9px 2px 9px;
+    background-color: #272727;
+}
+.Program-content .Program-content-text img.read-more {
+    padding: 20px;
+    display: block;
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: 5px 10px;
+    background-position: 0 20px;
+}
+
+.Advanced-Program {
+    margin: 70px 0;
+}
+
+.Program-area {
+    width: 1040px;
+    margin: 70px auto;
+}
+
+.Program-area h1.content-title {
+    margin-bottom: 40px;
+}
+
+.banner img {
+    padding: 100px 0;
+    margin-top: 10px 0;
+}
+
+
+/* ボックスのリンク */
+.box-link {
+    width: 1040px;
+    margin: 70px auto 80px auto;
+}
+
+.box-link ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0;
+    margin: 30px 0;
+}
+
+.box-link a {
+    text-decoration: none;
+    color: #272727;
+    display: inline-block;
+    background-color: #FFFFFF;
+    width: 410px;
+    padding: 0 25px;
+}
+
+.box-link li {
+    list-style-type: none;
+    background-image: url("../image/border_black.png");
+    background-repeat: repeat;
+    padding: 6px;
+    
+}
+
+.box-link p {
+    font-size: 25px;
+    line-height: 45px;
+    letter-spacing: 0.02em;
+    font-family: 'AxisStd-Light';
+    margin: 0;
+   
+}
+.box-link small {
+    display: block;
+    font-size: 13px;
+    line-height: 23px;
+    letter-spacing: 0.03em;
+}
+.box-link a.box-1 {
+    padding: 30px 43px 35px 25px;
+}
+.box-link a.box-2 {
+    padding: 9px 43px 11px 25px;
+}
+.box-link a.box-3 {
+    padding: 20px 42px 23px 25px;
+}
+.box-link a.box-4 {
+    padding: 9px 42px 11px 25px;
+}
+.box-link a:hover {
+    background-image: url("../image/border_black.png");
+    background-color:rgba(255,255,255,0.9);
+    background-blend-mode:lighten;
+    opacity: 0.7;
+}
+.box-link a {
+    position: relative;
+}
+.box-link a::after {
+    content: "";
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 9px;
+    width: 7px;
+    top: 50%;
+    right: 25px;
 }
