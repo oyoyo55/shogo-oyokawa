@@ -10,7 +10,7 @@
 
 body {
     
-    color: #333;
+    
     margin: 0;
 }
 
@@ -607,7 +607,7 @@ body {
 
 /* Basic Program */
 .Basic-ground {
-    background-color: #F7F7F7;
+    background-color: #F8F8F8;
     width: 100vw;
     position: relative;
     left: 50%;
@@ -740,21 +740,24 @@ body {
     margin-bottom: 40px;
 }
 
-.banner img {
+.banner {
     padding: 100px 0;
     margin-top: 10px 0;
+}
+.banner a:hover {
+    opacity: 0.5;
 }
 
 
 /* ボックスのリンク */
 .Basic-ground-B {
-    background-color: #F7F7F7;
+    background-color: #F8F8F8;
     width: 100vw;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     border-top: solid 1px #DDDDDD;
-    display: inline-block;
+    padding-bottom: 5px;
 }    
 .box-link {
     width: 1040px;
@@ -841,6 +844,10 @@ body {
 #footer .background-img {
     background-image: url("../image/footer_bg.png");
     margin-top: 80px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .nkou-contact {
     width: 1040px;
@@ -1058,7 +1065,7 @@ body {
 }
 .External-part ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     padding-left: 0;
 }
 .External-part li {
@@ -1066,7 +1073,6 @@ body {
     background-image: url("../image/border_black.png");
     background-repeat: repeat;
     padding: 6px;
-    margin: 15px 16px;
 }
 .External-part span {
     display: block;
@@ -1075,4 +1081,212 @@ body {
     letter-spacing: 0.03em;
     font-family: 'AxisStd-Light';
     padding: 7px 0;
+}
+
+/* footerナビ */
+.footer-nav {
+    width: 1040px;
+    margin: 0 auto;
+    padding-top: 35px;
+}
+.footer-nav .footer-nav-top {
+    display: flex;
+    justify-content: space-between;
+    
+}
+.footer-nav .footer-nav-top ul {
+    display: flex;
+    padding-left: 0;
+    margin: 20px 0 10px 0;
+}
+.footer-nav .footer-nav-top li {
+    list-style-type: none;
+    padding-right: 25px;
+    position: relative;
+    
+}
+.footer-nav .footer-nav-top img {
+    padding-right: 50px;
+}
+
+.footer-nav .footer-nav-top li.border::after {
+    content: "|";
+    position: absolute;
+    width: 0.5px;
+    height: 6px;
+    top: -1px;
+    right: 13px;
+}
+.footer-nav .footer-nav-top a {
+    text-decoration: none;
+    color: #000066;
+    font-family: 'AxisStd-Regular';
+    line-height: 16px;
+    letter-spacing: 0.03em;
+}
+.footer-nav .footer-nav-top a:hover {
+    text-decoration: underline;
+}
+
+/* footerナビリンクたち */
+
+.footer-nav-main {
+    display: flex;
+    width: 1040px;
+    margin: 20px auto 20px auto;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.footer-nav-main ul {
+    padding-left: 0;
+    width: 192px;
+    margin-right: 20px;
+    margin-bottom: 8px;
+}
+.footer-nav-main .footer-nav-main-E ul {
+    margin-right: 0;
+}
+.footer-nav-main li {
+    list-style-type: none;
+    padding-bottom: 9px;
+}
+
+.footer-nav-main li.title a {
+    font-size: 16px;
+    line-height: 20px;
+    color: #000066;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+}
+.footer-nav-main a.Advanced-Program {
+    position: relative;
+}
+.footer-nav-main a.Advanced-Program::before {
+    content: "アドバンスト プログラム";
+    font-size: 11px;
+    position: absolute;
+    left: 0;
+    top: -20px;
+}
+.footer-nav-main a {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Light';
+    color: #272727;
+}
+
+.footer-nav-main a:hover,
+.footer-nav-main a.Advanced-Program:hover::before {
+    text-decoration: underline;
+}
+
+.footer-nav-main ul.space {
+    border-top: 1px solid #DDDDDD;
+    margin-top: 0;
+    padding-top: 22px;
+}
+.footer-nav-main span {
+    font-size: 12px;
+}
+
+/* footer一番下 */
+.footer-bottom {
+    width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-bottom-left {
+    padding-top: 17px;
+}
+.footer-bottom-left a {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: #272727;
+    font-family: 'AxisStd-Light';
+    padding-right: 10px;
+}
+.footer-bottom-left a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom .footer-sns-btn ul {
+    display: flex;
+    padding-left: 0;
+    margin: 0;
+}
+.footer-bottom .footer-sns-btn li {
+    list-style-type: none;
+    
+}
+.footer-bottom .footer-sns-btn a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.03em;
+    color: #272727;
+    font-family: 'AxisStd-Light';
+    display: inline-block;
+    padding: 10px 30px 10px 10px;
+    display: flex;
+    
+    position: relative;
+}
+.footer-bottom .footer-sns-btn a.border {
+    border-right: #DDDDDD 1px solid;
+}
+.footer-bottom .footer-sns-btn p {
+    margin: 0 0 0 5px;
+}
+
+.footer-bottom .footer-sns-btn a::after {
+    content:"＞";
+    font-size: 10px;
+    position: absolute;
+    color: #CCCCCC;
+    top: 16px;
+    right: 8px;
+}
+.footer-bottom .footer-sns-btn a:hover {
+    background-color: #EEEEEE;
+}
+
+.background-c {
+    background-color: #F8F8F8;
+    margin-top: 70px;
+    padding-bottom: 28px;
+}
+.background-d {
+    background-color:#272727;
+    padding: 16px;
+}
+#footer .page-foot {
+    width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+#footer .page-foot a {
+    font-size: 11px;
+    line-height: 15px;
+    letter-spacing: 0.03em;
+    color: #AAAAAA;
+    font-family: 'AxisStd-Regular';
+    text-decoration: none;
+}
+#footer .page-foot a:hover {
+    text-decoration: underline;
+}
+
+.page-foot p.copyright {
+    font-size: 11px;
+    line-height: 15px;
+    letter-spacing: 0.03em;
+    color: #AAAAAA;
+    font-family: 'AxisStd-Regular';
+    margin: 0;
 }
