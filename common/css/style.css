@@ -9,20 +9,17 @@
 }
 
 body {
-    
-    
     margin: 0;
+    z-index: 0;
 }
 
 /* ------ headerコーディング ------ */
 /* header-TOPグローバルナビ */
-
 .top-nav {
-    background-color: #F7F7F7;
+    background-color: #F8F8F8;
     width: 100%;
     display: block;
 }
-
 .guide {
     display: flex;
     align-items: center;
@@ -32,27 +29,21 @@ body {
     margin: 0 auto;
     padding: 0 10px;
 }
-
-
 .guide p {
     font-size: 11px;
     margin: 10px 0;
     line-height: 100%;
     letter-spacing: 0.05em;
 }
-
 .guide ul.guide-link {
     display: flex;
     align-items: center;
     margin: 0;
-    
 }
-
 .guide .guide-link li {
     list-style-type: none;
     display: inline-block;
 }
-
 .guide .guide-link li.nkou-icon {
     background-image: url(../image/header_mainlogo_pc01.png);
     background-repeat: no-repeat;
@@ -61,15 +52,10 @@ body {
 }
 .guide .guide-link li.nkou-icon a {
     padding-left: 30px;
-    
 }
-
-
 .guide .guide-link li.boder  a {
     border-left: #333 solid 1px;
-    
 }
-
 .guide .guide-link a {
     text-decoration: none;
     color: #333;
@@ -81,29 +67,23 @@ body {
 .guide .guide-link a:hover {
     text-decoration: underline;
 }
-
 .guide .guide-link p {
     line-height: 1;
     display: inline-block;
 }
 
 /* header-main */
-
 .header-main {
     font-family: 'AxisStd-Regular';
     width: 1040px;
     padding: 0 10px;
     margin: 0 auto;
 }
-
 .header-main .nkou-info {
     margin-top: 20px;
     display: flex;
     position: relative;
 }
-
-
-
 .header-main .nkou-info .tel-sns {
     width: 211px;
     position: absolute;
@@ -111,7 +91,6 @@ body {
     top: -8px;
     display: flex;
 }
-
 .header-main .nkou-info .tel-sns p {
     font-size: 11px;
     color: #8d959c;
@@ -120,12 +99,10 @@ body {
     text-align: center;
     margin: 3px 0 0 13px;
 }
-
 .header-main .nkou-info .tel-sns .sns-btn ul {
     display: flex;
     padding-left: 35px;
 }
-
 .header-main .nkou-info .tel-sns .sns-btn li {
     list-style-type: none;
     padding-right: 8px;
@@ -138,7 +115,6 @@ body {
     align-items: center;
     position: relative;
 }
-
 .globalnav-left ul {
     display: flex;
     padding-left: 0;
@@ -151,7 +127,6 @@ body {
     display: block;
     font-size: 15px;
     font-family: 'AxisStd-Regular';
-    
 }
 .globalnav-left a {
     text-decoration: none;
@@ -163,7 +138,6 @@ body {
     text-align: center;
     position: relative;
 }
-
 .globalnav-left li.current a.about::after {
     content: "";
     background-image: url("../image/global_nav_link_01.png");
@@ -175,7 +149,6 @@ body {
     top: 20px;
     background-position: 50% 100%;
 }
-
 .globalnav-left a.net::after {
     content: "";
     background-image: url("../image/global_nav_link_02.png");
@@ -186,7 +159,6 @@ body {
     top: 20px;
     left: 49px;
 }
-
 .globalnav-left a.commute::after {
     content: "";
     background-image: url("../image/global_nav_link_03.png");
@@ -197,7 +169,6 @@ body {
     top: 20px;
     left: 30px;
 }
-
 .globalnav-left a.alliance::after {
     content: "";
     background-image: url("../image/global_nav_link_04.png");
@@ -214,7 +185,6 @@ body {
     pointer-events: none;
 }
 
-
 /* グローバルナビの枠の作成 */
 .globalnav-left li {
     border-left: solid 1px #DDDDDD;
@@ -222,7 +192,6 @@ body {
 .globalnav-left li:last-child {
     border-right: solid 1px #DDDDDD;
 }
-
 .globalnav-left a:hover::after {
     background-position: 50% bottom;
 }
@@ -246,10 +215,9 @@ body {
     width: 170px;
     display: block;
     text-align: center;
-    padding: 9px 0;
+    padding: 10px 0;
     position: relative;
 }
-
 .globalnav-right a::after {
     content: "";
     background-image: url("../image/icon_right_blue01.png");
@@ -261,11 +229,9 @@ body {
     top: 15px;
     right: 10px;
 }
-
 .globalnav-right a:hover {
     background-color: #1f286f;
     color: #FFFFFF;
-
 }
 .globalnav-right a:hover::after {
     background-image: url("../image/icon_right_white01.png");
@@ -273,10 +239,6 @@ body {
 
 /* ------ mainページ ------ */
 /* N高about-menu(２段あるやつ) */
-.nkou-about-menu {
-    
-}
-
 .nkou-image .nkou-about-menu  {
    position: relative;
     margin: 21px auto 0 auto;
@@ -284,24 +246,20 @@ body {
     width: 100%;
     background-color: #181836;
 }
-
 .nkou-image .nkou-about-menu ul {
     width: 1040px;
     display: flex;
     padding: 5px 5px 0 5px;
     margin: 0 auto;
 }
-
 .nkou-image .nkou-about-menu li {
     list-style-type: none;
     position: relative;
-    
     padding-left: 27px;
 }
 .nkou-image .nkou-about-menu  .first-stage li:first-child {
     padding-left: 0;
 }
-
 .nkou-image .nkou-about-menu li.icon::before {
     content: "";
     background-image: url("../image/icon_backslash_black01.png");
@@ -314,8 +272,6 @@ body {
     left: 8px;
     display: block;
 }
-
-
 .nkou-image .nkou-about-menu a {
     text-decoration: none;
     color: #FFFFFF;
@@ -329,11 +285,9 @@ body {
 .nkou-image .nkou-about-menu a:first-child {
     margin: 0;
 }
-
 .nkou-image .nkou-about-menu ul.second-stage {
     padding-left: 27px;
 }
-
 .nkou-image .nkou-about-menu a:hover { 
     background-color: #FFFFFF;
     color: #181836;
@@ -359,7 +313,6 @@ body {
    object-fit: cover;
    position: relative;
 }
-
 .about-pic-text {
     width: 100%;
     position: absolute;
@@ -368,7 +321,6 @@ body {
     display: inline-block;
     text-align: center;
 }
-
 .about-pic-text h1 {
     font-size: 52px;
     font-weight: 400;
@@ -377,7 +329,6 @@ body {
     font-family: 'AxisStd-Light';
     color: #FFFFFF;
     margin: 0;
-   
     position: relative;
 }
 .about-pic-text h1::after {
@@ -390,18 +341,14 @@ body {
     transform: translateX(-50%);
     bottom: 0;
 }
-
-
 .about-pic-text span {
     margin-top: 30px;
     display: inline-block;
 }
 
 /* パンくずナビ */
-
 .topic-path {
     width: 100%;
-    
     border-bottom: solid 1px #EEEEEE;
     margin-bottom: 50px;
 }
@@ -410,9 +357,7 @@ body {
     width: 1040px;
     margin: 0 auto;
     padding: 17px 10px;
-    
 }
-
 .topic-path li {
     list-style-type: none;
     font-size: 14px;
@@ -436,14 +381,13 @@ body {
 .about-MainText .MainText {
     text-align: center;
 }
-
 .about-MainText .MainText h1 {
     font-size: 33px;
     font-weight: 400;
     font-family: 'AxisStd-Light';
     letter-spacing: 0.2em;
     line-height: 59px;
-    
+    padding: 30px 0 45px 0;
 }
 .about-MainText .MainText h3 {
     font-size: 22px;
@@ -468,11 +412,10 @@ body {
     font-family: 'AxisStd-Light';
     letter-spacing: 0.05em;
     margin-top: 20px;
+    padding-bottom: 30px;
     display: inline-block;
     text-align: left;
 }
-
-
 
 /* 教育方針から下 */
 .about-MainText .strong-p h1.title {
@@ -484,7 +427,6 @@ body {
     border-bottom: solid 2px #272727;
     margin-bottom: 0;
 }
-
 .about-MainText .nkou-policy ul {
     padding-left: 0;
 }
@@ -493,14 +435,12 @@ body {
     display: flex;
     align-items: center;
 }
-
 .about-MainText .nkou-policy h2 {
     font-size: 24px;
     font-family: 'AxisStd-Regular';
     width: 74px;
     text-align-last: justify;
 }
-
 .about-MainText .nkou-policy p.policy {
     font-size: 19px;
     line-height: 50px;
@@ -515,7 +455,6 @@ body {
     margin: 0;
     display: flex;
     justify-content: space-between;
-    
 }
 .nkou-policy img {
     margin-top: 40px;
@@ -533,12 +472,10 @@ body {
     text-decoration: none;
     color: #272727;
 }
-
 .strong-p .standards-link a:hover .read-more,
 .strong-p .standards-link a:hover .standards-link-btn {
     opacity: 0.7;
 }
-
 .strong-p .standards-link-text {
     margin-left: 20px;
 }
@@ -558,7 +495,6 @@ body {
     margin: 10px 0 20px 0;
     text-align: justify;
 }
-
 .strong-p .standards-link-text img.read-more {
     padding: 20px;
     display: block;
@@ -572,7 +508,6 @@ body {
 .strong-p .nkou-charm {
     border-top: #272727 1px solid;
 }
-
 .strong-p .nkou-charm h2 {
     font-size: 25px;
     line-height: 45px;
@@ -583,7 +518,6 @@ body {
     margin: 0;
     padding: 0 0 25px 0;
 }
-
 .strong-p .nkou-charm p {
     line-height: 29px;
     font-family: 'AxisStd-Light';
@@ -596,14 +530,12 @@ body {
     line-height: 22px;
     font-family: 'AxisStd-Light';
 }
-
 .strong-p .nkou-charm .nkou-charm-A,
 .strong-p .nkou-charm .nkou-charm-B {
     display: flex;
     justify-content: space-between;
     margin: 75px 0;
 }
-
 
 /* Basic Program */
 .Basic-ground {
@@ -614,7 +546,6 @@ body {
     transform: translateX(-50%);
     border-top: solid 1px #DDDDDD;
     border-bottom: solid 1px #DDDDDD;
-   
 }
 .Basic-Program {
     width: 1040px;
@@ -629,7 +560,6 @@ body {
     line-height: 59px;
     letter-spacing: 0.04em;
     position: relative;
-    
 }
 .Program-top-text h1::after {
     content: "";
@@ -671,11 +601,9 @@ body {
 .Program-content a:hover {
     opacity: 0.7;
 }
-
 .Program-content .Program-content-text {
     color: #272727;
 }
-
 .Program-content .Program-content-text h2 {
     font-size: 22px;
     line-height: 40px;
@@ -689,8 +617,6 @@ body {
 .Program-content .Program-content-text span {
     font-size: 13px;
 }
-
-
 .Program-content .Program-content-text p {
     line-height: 29px;
     letter-spacing: 0.6px;
@@ -726,20 +652,16 @@ body {
     background-size: 5px 10px;
     background-position: 0 20px;
 }
-
 .Advanced-Program {
     margin: 70px 0;
 }
-
 .Program-area {
     width: 1040px;
     margin: 70px auto;
 }
-
 .Program-area h1.content-title {
     margin-bottom: 40px;
 }
-
 .banner {
     padding: 100px 0;
     margin-top: 10px 0;
@@ -747,7 +669,6 @@ body {
 .banner a:hover {
     opacity: 0.5;
 }
-
 
 /* ボックスのリンク */
 .Basic-ground-B {
@@ -763,7 +684,6 @@ body {
     width: 1040px;
     margin: 70px auto 80px auto;
 }
-
 .box-link ul {
     display: flex;
     justify-content: space-between;
@@ -771,7 +691,6 @@ body {
     padding-left: 0;
     margin: 30px 0;
 }
-
 .box-link a {
     text-decoration: none;
     color: #272727;
@@ -780,22 +699,18 @@ body {
     width: 410px;
     padding: 0 25px;
 }
-
 .box-link li {
     list-style-type: none;
     background-image: url("../image/border_black.png");
     background-repeat: repeat;
     padding: 6px;
-    
 }
-
 .box-link p {
     font-size: 25px;
     line-height: 45px;
     letter-spacing: 0.02em;
     font-family: 'AxisStd-Light';
     margin: 0;
-   
 }
 .box-link small {
     display: block;
@@ -840,7 +755,6 @@ body {
 
 /* footerコーディング */
 /* N高についてさらに詳細を知りたい方はこちら */
-
 #footer .background-img {
     background-image: url("../image/footer_bg.png");
     margin-top: 80px;
@@ -855,7 +769,6 @@ body {
     text-align: center;
     padding: 35px 0 5px 0;
 }
-
 .nkou-contact a {
     text-decoration: none;
 }
@@ -870,12 +783,10 @@ body {
     font-family: 'AxisStd-Regular';
     margin: 0;
 }
-
 .nkou-contact .nkou-contact-link {
     display: flex;
     justify-content: center;
 }
-
 .nkou-contact .nkou-contact-link ul{
     padding-left: 0;
     margin: 20px 0;
@@ -928,7 +839,6 @@ body {
 .nkou-contact .nkou-contact-link li {
     padding: 7px 0;
 }
-
 .nkou-contact .nkou-contact-tel {
     display: block;
     margin: 35px 0  0 40px;
@@ -956,7 +866,6 @@ body {
     top: 15px;
     right: 10px;
 }
-
 .nkou-contact .nkou-contact-tel p {
     color: #FFFFFF;
     font-size: 12px;
@@ -972,7 +881,6 @@ body {
 .nkou-contact .nkou-contact-tel a.web-contact:hover {
     text-decoration: underline;
 }
-
 .topic {
     width: 1040px;
     margin: 0 auto;
@@ -1020,7 +928,6 @@ body {
 .topic li {
     list-style-type: none;
 }
-
 .External-part {
     width: 1040px;
     margin: 40px auto;
@@ -1067,6 +974,7 @@ body {
     display: flex;
     justify-content: space-around;
     padding-left: 0;
+    margin-top: 30px;
 }
 .External-part li {
     list-style-type: none;
@@ -1092,7 +1000,6 @@ body {
 .footer-nav .footer-nav-top {
     display: flex;
     justify-content: space-between;
-    
 }
 .footer-nav .footer-nav-top ul {
     display: flex;
@@ -1103,12 +1010,10 @@ body {
     list-style-type: none;
     padding-right: 25px;
     position: relative;
-    
 }
 .footer-nav .footer-nav-top img {
     padding-right: 50px;
 }
-
 .footer-nav .footer-nav-top li.border::after {
     content: "|";
     position: absolute;
@@ -1129,14 +1034,13 @@ body {
 }
 
 /* footerナビリンクたち */
-
 .footer-nav-main {
     display: flex;
     width: 1040px;
     margin: 20px auto 20px auto;
     border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 30px;
 }
-
 .footer-nav-main ul {
     padding-left: 0;
     width: 192px;
@@ -1150,7 +1054,6 @@ body {
     list-style-type: none;
     padding-bottom: 9px;
 }
-
 .footer-nav-main li.title a {
     font-size: 16px;
     line-height: 20px;
@@ -1176,12 +1079,10 @@ body {
     font-family: 'AxisStd-Light';
     color: #272727;
 }
-
 .footer-nav-main a:hover,
 .footer-nav-main a.Advanced-Program:hover::before {
     text-decoration: underline;
 }
-
 .footer-nav-main ul.space {
     border-top: 1px solid #DDDDDD;
     margin-top: 0;
@@ -1213,7 +1114,6 @@ body {
 .footer-bottom-left a:hover {
     text-decoration: underline;
 }
-
 .footer-bottom .footer-sns-btn ul {
     display: flex;
     padding-left: 0;
@@ -1221,7 +1121,6 @@ body {
 }
 .footer-bottom .footer-sns-btn li {
     list-style-type: none;
-    
 }
 .footer-bottom .footer-sns-btn a {
     text-decoration: none;
@@ -1233,7 +1132,6 @@ body {
     display: inline-block;
     padding: 10px 30px 10px 10px;
     display: flex;
-    
     position: relative;
 }
 .footer-bottom .footer-sns-btn a.border {
@@ -1242,7 +1140,6 @@ body {
 .footer-bottom .footer-sns-btn p {
     margin: 0 0 0 5px;
 }
-
 .footer-bottom .footer-sns-btn a::after {
     content:"＞";
     font-size: 10px;
@@ -1254,7 +1151,6 @@ body {
 .footer-bottom .footer-sns-btn a:hover {
     background-color: #EEEEEE;
 }
-
 .background-c {
     background-color: #F8F8F8;
     margin-top: 70px;
@@ -1281,7 +1177,6 @@ body {
 #footer .page-foot a:hover {
     text-decoration: underline;
 }
-
 .page-foot p.copyright {
     font-size: 11px;
     line-height: 15px;
@@ -1289,4 +1184,106 @@ body {
     color: #AAAAAA;
     font-family: 'AxisStd-Regular';
     margin: 0;
+}
+
+
+.fix-header {
+	background-color:#FFFFFF;
+	line-height: 40px;
+	top: -40px;/* 上に隠す鷹さ */
+	left: 0;
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+	color: #272727;
+	padding-top:0;
+	position: fixed;
+	opacity:0;/* 	最初読み込んだときは透過 */
+	z-index: 1000;/*　他のアイテムに対して最上位のレイヤーになるように */
+/*	opacity: 0; */
+	}
+
+
+
+.fix-header-contents {
+		width:1040px;
+        margin: 4px auto;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+}
+
+.fix-header-logo img {
+    display: block;
+    padding-top: 3px;
+    margin: 7px 0;
+}
+
+.fix-header-menus {
+    display: flex;
+    align-items: center;
+}
+
+.fix-header-menus p {
+    font-size: 11px;
+    line-height: 15px;
+    color: #8d959c;
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Light';
+    display: inline-block;
+    text-align: left;
+    margin: 0;
+}
+
+.fix-header-menus a {
+    font-size: 15px;
+    
+    letter-spacing: 0.03em;
+    font-family: 'AxisStd-Regular';
+    color: #1f286f;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #272727;
+    width: 170px;
+    height: 33px;
+    padding-bottom: 5px;
+    
+    position: relative;
+}
+
+.fix-header-menus a::after {
+    content: "";
+    background-image: url("../image/icon_right_blue01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    height: 9px;
+    width: 7px;
+    top: 16px;
+    right: 10px;
+}
+
+.fix-header-menus a:hover {
+    background-color: #1f286f;
+    color: #FFFFFF;
+}
+.fix-header-menus a:hover::after {
+    background-image: url("../image/icon_right_white01.png");
+}
+
+
+.fix-header-menus li {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.fix-header-menus ul {
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.fix-header-menus img {
+    margin-right: 11px;
 }
