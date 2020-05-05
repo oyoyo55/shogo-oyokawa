@@ -70,6 +70,8 @@ li {
     height: 33px;
     padding-bottom: 5px;
     position: relative;
+    transition: background-color 0.2s;
+    transition: color 0.2s;
 }
 .fix-header-menus a::after {
     content: "";
@@ -301,6 +303,8 @@ li {
     text-align: center;
     padding: 10px 0;
     position: relative;
+    transition: background-color 0.2s;
+    transition: color 0.2s;
 }
 .globalnav-right a::after {
     content: "";
@@ -364,6 +368,8 @@ li {
     display: inline-block;
     padding: 8px 8px;
     margin: 30px;
+    transition: background-color 0.2s;
+    transition: color 0.2s;
 }
 .nkou-image .nkou-about-menu a:first-child {
     margin: 0;
@@ -618,7 +624,7 @@ li {
 }
 
 /* Basic Program */
-.Basic-ground {
+.background-A {
     background-color: #F8F8F8;
     width: 100vw;
     position: relative;
@@ -749,7 +755,7 @@ li {
 }
 
 /* ボックスのリンク */
-.Basic-ground-B {
+.background-B {
     background-color: #F8F8F8;
     width: 100vw;
     position: relative;
@@ -873,6 +879,8 @@ li {
     width: 258px;
     padding: 14px 0;
     position: relative;
+    transition: background-color 0.2s;
+    transition: color 0.2s;
 }
 .nkou-contact .nkou-contact-link ul a.book::before {
     content: "";
@@ -944,6 +952,10 @@ li {
     letter-spacing: 0.03em;
     font-family: 'AxisStd-Regular';
     margin: 5px 0 10px 40px;
+}
+.nkou-contact .nkou-contact-link ul a {
+    transition: background-color 0.2s;
+    transition: color 0.2s;
 }
 .nkou-contact .nkou-contact-link ul a:hover,
 .nkou-contact .nkou-contact-tel a.tel-link:hover {
@@ -1207,12 +1219,12 @@ li {
 .footer-bottom .footer-sns-btn a:hover {
     background-color: #EEEEEE;
 }
-.background-c {
+.background-C {
     background-color: #F8F8F8;
     margin-top: 70px;
     padding-bottom: 28px;
 }
-.background-d {
+.background-D {
     background-color:#272727;
     padding: 16px;
 }
