@@ -6,11 +6,61 @@
     <title>nkou-html</title>
     <link rel="stylesheet" href="common/css/normalize.css">
     <link rel="stylesheet" href="common/css/style.css">
+    <!-- Google Hosted LibrariesからjQuery取得 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script>
+        $(function () {
+	        "use strict";
+	        var flag = "view";
+
+        $(window).on("scroll", function () {
+        if ($(this).scrollTop() > 180) {     // 180pxスクロールしたら出てくるように設定(もし180pxスクロールしたら)
+          if (flag === "view") {
+          $(".fix-header").stop().css({opacity: '0.9'}).animate({
+        
+              top: 0
+            }, 200);　　　　// 200は降りてくるスピード
+
+            flag = "hide";
+          }
+        } else {
+          if (flag === "hide") {
+            $(".fix-header").stop().animate({top:"-40px",opacity: 0}, 200);　　// 上まで行ったらopacityで消す
+		       
+            flag = "view";
+            }
+          }
+         });
+        });
+    </script>
 </head>
 <body>
-
+    
+    <div class="fix-header">
+        <div class="fix-header-contents">
+        <!-- ロゴはfloat左寄せで表示 -->
+            <div class="fix-header-logo">
+                <img src="common/image/header_mainlogo.png" width="170" height="35">
+            </div>
+        <!-- メニューのブロックはfloatで右寄せ -->
+            <div class="fix-header-menus">
+                <img src="common/image/header_tel_js.png" width="192" height="22">
+                <p>受付時間<br>平日10:00~19:00</p>
+                <div class="fix-header-menus-btn">
+                    <ul>
+                        <li><a href="#">説明会・相談会</a></li>
+                        <li><a href="#">資料請求</a></li>
+                    </ul>    
+                </div>
+            </div>
+        </div>
+    </div>
     <header id="PageTop">
+        
         <seciton class="top-nav">
+            
             <div class="guide">
                 <p>KADOKAWAが創る新しいネットの高校</p>
                 <ul class="guide-link">
