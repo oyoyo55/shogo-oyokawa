@@ -10,6 +10,7 @@
 body {
     margin: 0;
     z-index: 0;
+    font-family: 'AxisStd-Light', "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "Osaka", "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 a {
     text-decoration: none;
@@ -573,10 +574,11 @@ li {
 .strong-p .standards-link-text p {
     font-size: 16px;
     line-height: 29px;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.1em;
+    text-align: justify;
     font-family: 'AxisStd-Light';
     margin: 10px 0 20px 0;
-    text-align: justify;
+    
 }
 .strong-p .standards-link-text img.read-more {
     padding: 20px;
@@ -621,7 +623,10 @@ li {
 }
 
 /* Basic Program */
-.background-A {
+.Basic-Program-content,
+.IT-tool,
+.nkou-start-up,
+.admission-course {
     background-color: #F8F8F8;
     width: 100vw;
     position: relative;
@@ -752,7 +757,7 @@ li {
 }
 
 /* ボックスのリンク */
-.background-B {
+.message-link {
     background-color: #F8F8F8;
     width: 100vw;
     position: relative;
@@ -1216,12 +1221,12 @@ li {
 .footer-bottom .footer-sns-btn a:hover {
     background-color: #EEEEEE;
 }
-.background-C {
+.footer-main {
     background-color: #F8F8F8;
     margin-top: 70px;
     padding-bottom: 28px;
 }
-.background-D {
+.footer-copyright {
     background-color:#272727;
     padding: 16px;
 }
