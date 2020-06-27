@@ -114,6 +114,13 @@ function makeLink($value) {
             $post['id']
         ));
         $like = $likes->fetch();
+
+        // likesテーブルからいいねした人の数を取得
+        $likes_cnt = $db->prepare('SELECT COUNT(member_id) AS cnt FROM likes WHERE post_id=?');
+        $likes_cnt->execute(array(
+            $post['id']
+        ));
+        $like_cnt = $likes_cnt->fetch();
         
         ?>
         
@@ -131,6 +138,7 @@ function makeLink($value) {
                 <a href="like.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
             <?php endif; ?>
             
+            <!-- いいねの数を表示 -->
            <?php print($like_cnt['cnt']); ?>
             
             <?php if ($post['reply_post_id'] > 0): ?>
