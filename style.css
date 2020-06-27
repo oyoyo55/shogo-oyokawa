@@ -155,3 +155,8 @@ li {
 .retweet_orange {
 	color: #FF9900;
 }
+.rt_member_name {
+	font-size: 70%;
+	padding-bottom: 5px;
+    color: #999;
+}    
