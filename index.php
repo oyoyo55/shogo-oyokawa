@@ -129,6 +129,11 @@ function makeLink($value) {
             $post['rt_post_id']
         ));
         $retweets = $retweet->fetch();
+
+        // リツイートされている数をカウント
+        $rts_cnt = $db->prepare('SELECT COUNT(*) AS cnt FROM posts WHERE rt_post_id=?>0 AND rt_member_id>0');
+        $rts_cnt->execute(array($post['rt_post_id']));
+        $rt_cnt = $rts_cnt->fetch();
         
         ?>
         
@@ -146,7 +151,7 @@ function makeLink($value) {
                 <a href="like.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
             <?php endif; ?>
             
-            <!-- いいねの数を表示 -->
+            <!-- いいね数を表示 -->
             <?php print($like_cnt['cnt']); ?>
            
             <!-- リツイートボタン -->
@@ -155,7 +160,10 @@ function makeLink($value) {
                 <a class="like-btn" href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
             <?php else : ?>
                 <a class="like-btn" href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
-            <?php endif; ?>    
+            <?php endif; ?>
+
+            <!-- リツイート数を表示 -->
+            <?php print($rt_cnt['cnt']); ?>
             
             <!-- 返信メッセージurl -->
             <!-- 返信メッセージがあればurlを表示 -->
