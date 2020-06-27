@@ -122,6 +122,14 @@ function makeLink($value) {
         ));
         $like_cnt = $likes_cnt->fetch();
         
+        // ログインしているユーザーがリツイートしているデータを取得
+        $retweet = $db->prepare('SELECT COUNT(*) AS cnt FROM posts WHERE rt_member_id=? AND rt_post_id=?');
+        $retweet->execute(array(
+            $member['id'],
+            $post['rt_post_id']
+        ));
+        $retweets = $retweet->fetch();
+        
         ?>
         
 		<div class="msg">
@@ -139,11 +147,23 @@ function makeLink($value) {
             <?php endif; ?>
             
             <!-- いいねの数を表示 -->
-           <?php print($like_cnt['cnt']); ?>
+            <?php print($like_cnt['cnt']); ?>
+           
+            <!-- リツイートボタン -->
+            <!-- ログインユーザーがリツイート済みなら色をオレンジに -->
+            <?php if($post['rt_member_id'] == $member['id'] || $rt_record['cnt'] >0) : ?>
+                <a class="like-btn" href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
+            <?php else : ?>
+                <a class="like-btn" href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
+            <?php endif; ?>    
             
-            <?php if ($post['reply_post_id'] > 0): ?>
+            <!-- 返信メッセージurl -->
+            <!-- 返信メッセージがあればurlを表示 -->
+            <?php if ($post['reply_post_id'] > 0) : ?>
                 <a href="view.php?id=<?php echo h ($post['reply_post_id']); ?>">返信元のメッセージ</a>
             <?php endif; ?>
+
+            <!-- ログインユーザーであれば削除ボタン表示 -->
             <?php if ($_SESSION['id'] == $post['member_id']): ?>
                 [<a href="delete.php?id=<?php echo h ($post['id']); ?>" style="color:#F33;">削除</a>]
             <?php endif; ?>    
