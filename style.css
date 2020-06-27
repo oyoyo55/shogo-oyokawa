@@ -144,11 +144,14 @@ li {
 	color: #999;
 }
 
+/* いいね、リツイート機能 */
 .heart_red {
 	color:#e54747;
 }
-
 .heart_gray,
 .retweet_gray {
 	color: #999;
+}
+.retweet_orange {
+	color: #FF9900;
 }
