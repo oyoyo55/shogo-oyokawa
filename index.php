@@ -135,9 +135,19 @@ function makeLink($value) {
         $rts_cnt->execute(array($post['rt_post_id']));
         $rt_cnt = $rts_cnt->fetch();
         
+        // リツイートしたユーザーのnameを取得
+        $rt_member = $db->prepare('SELECT * FROM members WHERE id=?');
+        $rt_member->execute(array($post['rt_member_id']));
+        $rt_member_name = $rt_member->fetch();
         ?>
         
 		<div class="msg">
+
+            <!-- リツイートされた投稿であれば、rt_memberを表示 -->
+            <?php if ($post['rt_post_id'] >0 && $post['rt_member_id'] >0) : ?>
+                <p class="rt_member_name"><i class="fas fa-retweet retweet"></i><?php echo h($rt_member_name['name']); ?>さんがリツイート</p>
+            <?php endif; ?>
+
 			<img src="member_picture/<?php echo h($post['picture']); ?>" width="48" height="48" alt="<?php echo h ($post['name']); ?>" />
 			<p><?php echo makeLink(h($post['message']));?><span class="name">（<?php echo h ($post['name']); ?>）</span>
             [<a href="index.php?res=<?php echo h ($post['id']); ?>">Re</a>]</p>
