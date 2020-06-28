@@ -109,16 +109,18 @@ function makeLink($value) {
             
         <?php
         // likesテーブルからいいねのデータを取り出す
-        $likes = $db->prepare('SELECT * FROM likes WHERE post_id=?');
+        $likes = $db->prepare('SELECT * FROM likes WHERE post_id=? OR post_id=?');
         $likes->execute(array(
-            $post['id']
+            $post['id'],
+            $post['rt_post_id']
         ));
         $like = $likes->fetch();
 
         // likesテーブルからいいねした人の数を取得
-        $likes_cnt = $db->prepare('SELECT COUNT(member_id) AS cnt FROM likes WHERE post_id=?');
+        $likes_cnt = $db->prepare('SELECT COUNT(member_id) AS cnt FROM likes WHERE post_id=? OR post_id=?');
         $likes_cnt->execute(array(
-            $post['id']
+            $post['id'],
+            $post['rt_post_id']
         ));
         $like_cnt = $likes_cnt->fetch();
         
@@ -167,9 +169,9 @@ function makeLink($value) {
             <!-- リツイートボタン -->
             <!-- ログインユーザーがリツイート済みなら色をオレンジに -->
             <?php if($post['rt_member_id'] == $member['id'] || $rt_record['cnt'] >0) : ?>
-                <a class="like-btn" href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
+                <a href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
             <?php else : ?>
-                <a class="like-btn" href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
+                <a href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
             <?php endif; ?>
 
             <!-- リツイート数を表示 -->
