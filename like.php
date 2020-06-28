@@ -21,17 +21,19 @@ $post = $posts->fetch();
 
 // ログインユーザーがいいねしているか判断するために
 // likesテーブルからログインユーザーとpostのパラメータが一緒のデータを取得
-$like_posts = $db->prepare('SELECT COUNT(*) AS cnt FROM likes WHERE post_id=? AND member_id=?');
+$like_posts = $db->prepare('SELECT COUNT(*) AS cnt FROM likes WHERE (post_id=? OR post_id=?) AND member_id=?');
 $like_posts->execute(array(
     $_REQUEST['id'],
+    $post['rt_post_id'],
     $member['id']
 ));
 $like_post = $like_posts->fetch();
 
 // いいねを取り消すためのidを取得
-$likes_del = $db->prepare('SELECT * FROM likes WHERE post_id=? AND member_id=?');
+$likes_del = $db->prepare('SELECT * FROM likes WHERE (post_id=? OR post_id=?) AND member_id=?');
 $likes_del->execute(array(
     $_REQUEST['id'],
+    $post['rt_post_id'],
     $member['id']
 ));
 $like_del = $likes_del->fetch();
@@ -39,12 +41,22 @@ $like_del = $likes_del->fetch();
 
 // ログインユーザーがいいねしていなかったら
 if ($like_post['cnt'] == 0) {
+    
+    // リツイートされていなかったら
+    if ($post['rt_post_id'] == 0) {
     // likesテーブルにINSERT
     $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
     $likes->execute(array(
     $_REQUEST['id'],
     $member['id']
     ));
+    } else {
+    $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
+    $likes->execute(array(
+    $_REQUEST['rt_post_id'],
+    $member['id']
+    ));    
+    }
 
 // いいね済みなら    
 } else {
