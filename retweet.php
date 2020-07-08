@@ -37,7 +37,7 @@ $retweets_del->execute(array(
 $retweet_del = $retweets_del->fetch();
 
 // 自分の投稿はリツイートできないように
-if ($post['rt_member_id'] || $post['member_id'] == $member['id']) {
+if ($post['rt_member_id'] || $post['member_id'] === $member['id']) {
    header('Location: index.php');
 } else {
 
@@ -73,10 +73,10 @@ if ($post['rt_member_id'] || $post['member_id'] == $member['id']) {
             // リツイートする
             $retweets = $db->prepare('INSERT INTO posts SET member_id=?, message=?, rt_member_id=?, rt_post_id=?, created=NOW()');
             $retweets->execute(array(
-            $post['member_id'],
-            $post['message'],
-            $member['id'],
-            $post['rt_post_id']
+                $post['member_id'],
+                $post['message'],
+                $member['id'],
+                $post['rt_post_id']
             ));
 
             header('Location: index.php');

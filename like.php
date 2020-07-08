@@ -40,21 +40,21 @@ $like_del = $likes_del->fetch();
 
 
 // ログインユーザーがいいねしていなかったら
-if ($like_post['cnt'] == 0) {
+if ($like_post['cnt'] === 0) {
     
     // リツイートされていなかったら
-    if ($post['rt_post_id'] == 0) {
+    if ($post['rt_post_id'] === 0) {
     // likesテーブルにINSERT
     $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
     $likes->execute(array(
-    $_REQUEST['id'],
-    $member['id']
+        $_REQUEST['id'],
+        $member['id']
     ));
     } else {
     $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
     $likes->execute(array(
-    $_REQUEST['rt_post_id'],
-    $member['id']
+        $_REQUEST['rt_post_id'],
+        $member['id']
     ));    
     }
 

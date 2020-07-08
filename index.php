@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 
 // 投稿を取得する
 $page = $_REQUEST['page'];
-if ($page == '') {
+if ($page === '') {
     $page = 1;
 }
 $page = max($page, 1);
@@ -66,9 +66,6 @@ function h($value) {
 function makeLink($value) {
     return mb_ereg_replace("(https?)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)",'<a href="\1\2">\1\2</a>' , $value);
 }
-
-
-
 
 ?>
 
@@ -157,7 +154,7 @@ function makeLink($value) {
 
             <!-- いいねボタン -->
             <!-- ログインユーザーがいいね済みなら色を赤色に -->
-            <?php if ($member['id'] == $like['member_id']) : ?>
+            <?php if ($member['id'] === $like['member_id']) : ?>
                 <a href="like.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-heart heart_red"></i></a>
             <?php else : ?>
                 <a href="like.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
@@ -168,7 +165,7 @@ function makeLink($value) {
            
             <!-- リツイートボタン -->
             <!-- ログインユーザーがリツイート済みなら色をオレンジに -->
-            <?php if($post['rt_member_id'] == $member['id'] || $rt_record['cnt'] >0) : ?>
+            <?php if($post['rt_member_id'] === $member['id'] || $rt_record['cnt'] >0) : ?>
                 <a href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
             <?php else : ?>
                 <a href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
@@ -184,7 +181,7 @@ function makeLink($value) {
             <?php endif; ?>
 
             <!-- ログインユーザーであれば削除ボタン表示 -->
-            <?php if ($_SESSION['id'] == $post['member_id']): ?>
+            <?php if ($_SESSION['id'] === $post['member_id']): ?>
                 [<a href="delete.php?id=<?php echo h ($post['id']); ?>" style="color:#F33;">削除</a>]
             <?php endif; ?>    
 		</div>
