@@ -11,21 +11,23 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $member = $members->fetch();
 } else {
     // ログインしていない
-    header('Location: login.php'); exit();
+    header('Location: login.php');
+    exit();
 }
 
 // 投稿を記録する
 if (!empty($_POST)) {
-	if ($_POST['message'] != '') {
-		$message = $db->prepare('INSERT INTO posts SET member_id=?, message=?, reply_post_id=?, created=NOW()');
-		$message->execute(array(
-			$member['id'],
+    if ($_POST['message'] != '') {
+        $message = $db->prepare('INSERT INTO posts SET member_id=?, message=?, reply_post_id=?, created=NOW()');
+        $message->execute(array(
+            $member['id'],
             $_POST['message'],
             $_POST['reply_post_id']
-		));
+        ));
 
-		header('Location: index.php'); exit();
-	}
+        header('Location: index.php');
+        exit();
+    }
 }
 
 // 投稿を取得する
@@ -47,20 +49,22 @@ $posts->execute();
 // 返信の場合
 
 if (isset($_REQUEST['res'])) {
-	$response = $db->prepare('SELECT m.name, m.picture, p.* FROM members m,	posts p WHERE m.id=p.member_id AND p.id=? ORDER BY p.created DESC');
-		$response->execute(array($_REQUEST['res']));
-		$table = $response->fetch();
-		$message = '@' . $table['name'] . ' ' . $table['message'];
-    }
+    $response = $db->prepare('SELECT m.name, m.picture, p.* FROM members m,	posts p WHERE m.id=p.member_id AND p.id=? ORDER BY p.created DESC');
+    $response->execute(array($_REQUEST['res']));
+    $table = $response->fetch();
+    $message = '@' . $table['name'] . ' ' . $table['message'];
+}
     
 // htmlspecialcharsのショートカット
-function h($value) {
+function h($value)
+{
     return htmlspecialchars($value, ENT_QUOTES);
 }
 
 // 本文内のURLリンクを設定します
-function makeLink($value) {
-    return mb_ereg_replace("(https?)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)",'<a href="\1\2">\1\2</a>' , $value);
+function makeLink($value)
+{
+    return mb_ereg_replace("(https?)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\1\2">\1\2</a>', $value);
 }
 
 ?>
@@ -89,8 +93,8 @@ function makeLink($value) {
 		    <dl>
 			    <dt><?php echo h($member['name']); ?>さん、メッセージをどうぞ</dt>
 		    <dd>
-		        <textarea name="message" cols="50" rows="5"><?php echo h ($message); ?></textarea>
-		        <input type="hidden" name="reply_post_id" value="<?php echo h ($_REQUEST['res']); ?>" />
+		        <textarea name="message" cols="50" rows="5"><?php echo h($message); ?></textarea>
+		        <input type="hidden" name="reply_post_id" value="<?php echo h($_REQUEST['res']); ?>" />
 		    </dd>
 		    </dl>
 		    <div>
@@ -143,17 +147,17 @@ function makeLink($value) {
                 <p class="rt_member_name"><i class="fas fa-retweet retweet"></i><?php echo h($rt_member_name['name']); ?>さんがリツイート</p>
             <?php endif; ?>
 
-			<img src="member_picture/<?php echo h($post['picture']); ?>" width="48" height="48" alt="<?php echo h ($post['name']); ?>" />
-			<p><?php echo makeLink(h($post['message']));?><span class="name">（<?php echo h ($post['name']); ?>）</span>
-            [<a href="index.php?res=<?php echo h ($post['id']); ?>">Re</a>]</p>
-            <p class="day"><a href="view.php?id=<?php echo h ($post['id']); ?>"><?php echo h ($post['created']); ?></a></p>
+			<img src="member_picture/<?php echo h($post['picture']); ?>" width="48" height="48" alt="<?php echo h($post['name']); ?>" />
+			<p><?php echo makeLink(h($post['message']));?><span class="name">（<?php echo h($post['name']); ?>）</span>
+            [<a href="index.php?res=<?php echo h($post['id']); ?>">Re</a>]</p>
+            <p class="day"><a href="view.php?id=<?php echo h($post['id']); ?>"><?php echo h($post['created']); ?></a></p>
 
             <!-- いいねボタン -->
             <!-- ログインユーザーがいいね済みなら色を赤色に -->
             <?php if ($member['id'] === $like['member_id']) : ?>
-                <a href="like.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-heart heart_red"></i></a>
+                <a href="like.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-heart heart_red"></i></a>
             <?php else : ?>
-                <a href="like.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
+                <a href="like.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
             <?php endif; ?>
             
             <!-- いいね数を表示 -->
@@ -161,10 +165,10 @@ function makeLink($value) {
            
             <!-- リツイートボタン -->
             <!-- ログインユーザーがリツイート済みなら色をオレンジに -->
-            <?php if($post['rt_member_id'] === $member['id'] || $rt_record['cnt'] >0) : ?>
-                <a href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
+            <?php if ($post['rt_member_id'] === $member['id'] || $rt_record['cnt'] >0) : ?>
+                <a href="retweet.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
             <?php else : ?>
-                <a href="retweet.php?id=<?php echo h ($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
+                <a href="retweet.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
             <?php endif; ?>
 
             <!-- リツイート数を表示 -->
@@ -173,12 +177,12 @@ function makeLink($value) {
             <!-- 返信メッセージurl -->
             <!-- 返信メッセージがあればurlを表示 -->
             <?php if ($post['reply_post_id'] > 0) : ?>
-                <a href="view.php?id=<?php echo h ($post['reply_post_id']); ?>">返信元のメッセージ</a>
+                <a href="view.php?id=<?php echo h($post['reply_post_id']); ?>">返信元のメッセージ</a>
             <?php endif; ?>
 
             <!-- ログインユーザーであれば削除ボタン表示 -->
             <?php if ($_SESSION['id'] === $post['member_id']): ?>
-                [<a href="delete.php?id=<?php echo h ($post['id']); ?>" style="color:#F33;">削除</a>]
+                [<a href="delete.php?id=<?php echo h($post['id']); ?>" style="color:#F33;">削除</a>]
             <?php endif; ?>    
 		</div>
 
