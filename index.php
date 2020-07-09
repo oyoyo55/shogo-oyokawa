@@ -20,7 +20,7 @@ if (!empty($_POST)) {
 		$message = $db->prepare('INSERT INTO posts SET member_id=?, message=?, reply_post_id=?, created=NOW()');
 		$message->execute(array(
 			$member['id'],
-			$_POST['message'],
+            $_POST['message'],
             $_POST['reply_post_id']
 		));
 
@@ -30,9 +30,6 @@ if (!empty($_POST)) {
 
 // 投稿を取得する
 $page = $_REQUEST['page'];
-if ($page === '') {
-    $page = 1;
-}
 $page = max($page, 1);
 
 // 最終ページを取得する
