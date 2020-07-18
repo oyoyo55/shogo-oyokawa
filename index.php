@@ -54,7 +54,34 @@ if (isset($_REQUEST['res'])) {
     $table = $response->fetch();
     $message = '@' . $table['name'] . ' ' . $table['message'];
 }
-    
+
+// ログインユーザーがいいねしたpost_idを取得
+$likes = $db->prepare('SELECT * FROM likes WHERE member_id=?');
+$likes->execute(array($_SESSION['id']));
+$like = $likes->fetchall();
+$like_post = array_column($like, 'post_id');
+
+// いいね数をカウント
+$likes_id = $db->query('SELECT post_id, COUNT(*) AS cnt FROM likes GROUP BY post_id ORDER BY post_id DESC');
+$like_id = $likes_id->fetchall();
+$like_cnt = array_column($like_id, 'post_id');
+
+//ログインユーザーがリツイートした投稿を取得する
+$retweets = $db->prepare('SELECT * FROM posts WHERE rt_member_id=? AND rt_post_id>0');
+$retweets->execute(array($_SESSION['id']));
+$retweet = $retweets->fetchall();
+$retweet_post = array_column($retweet, 'rt_post_id');
+
+// リツイート数をカウント
+$retweets_id = $db->query('SELECT rt_post_id, COUNT(*) AS cnt FROM posts WHERE rt_member_id>0 AND rt_post_id>0 GROUP BY rt_post_id ORDER BY rt_post_id DESC');
+$retweet_id = $retweets_id->fetchall();
+$retweet_cnt = array_column($retweet_id, 'rt_post_id');
+
+// リツイートしたmember_id取得
+$rt_members = $db->query('SELECT * FROM members');
+$rt_member = $rt_members->fetchall();
+$rt_member_id = array_column($rt_member, 'id');
+
 // htmlspecialcharsのショートカット
 function h($value)
 {
@@ -104,47 +131,18 @@ function makeLink($value)
 
         <?php foreach ($posts as $post): ?>
             
-        <?php
-        // likesテーブルからいいねのデータを取り出す
-        $likes = $db->prepare('SELECT * FROM likes WHERE post_id=? OR post_id=?');
-        $likes->execute(array(
-            $post['id'],
-            $post['rt_post_id']
-        ));
-        $like = $likes->fetch();
-
-        // likesテーブルからいいねした人の数を取得
-        $likes_cnt = $db->prepare('SELECT COUNT(member_id) AS cnt FROM likes WHERE post_id=? OR post_id=?');
-        $likes_cnt->execute(array(
-            $post['id'],
-            $post['rt_post_id']
-        ));
-        $like_cnt = $likes_cnt->fetch();
         
-        // ログインしているユーザーがリツイートしているデータを取得
-        $retweet = $db->prepare('SELECT COUNT(*) AS cnt FROM posts WHERE rt_member_id=? AND rt_post_id=?');
-        $retweet->execute(array(
-            $member['id'],
-            $post['rt_post_id']
-        ));
-        $retweets = $retweet->fetch();
-
-        // リツイートされている数をカウント
-        $rts_cnt = $db->prepare('SELECT COUNT(*) AS cnt FROM posts WHERE rt_post_id=?>0 AND rt_member_id>0');
-        $rts_cnt->execute(array($post['rt_post_id']));
-        $rt_cnt = $rts_cnt->fetch();
-        
-        // リツイートしたユーザーのnameを取得
-        $rt_member = $db->prepare('SELECT * FROM members WHERE id=?');
-        $rt_member->execute(array($post['rt_member_id']));
-        $rt_member_name = $rt_member->fetch();
-        ?>
         
 		<div class="msg">
 
             <!-- リツイートされた投稿であれば、rt_memberを表示 -->
             <?php if ($post['rt_post_id'] >0 && $post['rt_member_id'] >0) : ?>
-                <p class="rt_member_name"><i class="fas fa-retweet retweet"></i><?php echo h($rt_member_name['name']); ?>さんがリツイート</p>
+                <p class="rt_member_name"><i class="fas fa-retweet retweet"></i>
+                <?php if (in_array($post['rt_member_id'], $rt_member_id)) : ?>
+                    <?php $rt_name_searth = array_search($post['rt_member_id'], $rt_member_id); ?>
+                    <?php print($rt_member[$rt_name_searth]['name']); ?>
+                <?php endif; ?>
+                さんがリツイート</p>
             <?php endif; ?>
 
 			<img src="member_picture/<?php echo h($post['picture']); ?>" width="48" height="48" alt="<?php echo h($post['name']); ?>" />

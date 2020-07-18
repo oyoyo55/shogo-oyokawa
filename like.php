@@ -11,7 +11,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $member = $members->fetch();
 } else {
     // ログインしていない
-    header('Location: login.php'); exit();
+    header('Location: login.php');
+    exit();
 }
 
 // postsテーブルからデータ取得
@@ -43,26 +44,25 @@ $like_del = $likes_del->fetch();
 if ($like_post['cnt'] === 0) {
     
     // リツイートされていなかったら
-    if ($post['rt_post_id'] === 0) {
-    // likesテーブルにINSERT
-    $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
-    $likes->execute(array(
+    if ($post['rt_post_id'] == 0) {
+        // likesテーブルにINSERT
+        $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
+        $likes->execute(array(
         $_REQUEST['id'],
         $member['id']
     ));
     } else {
-    $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
-    $likes->execute(array(
+        $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
+        $likes->execute(array(
         $_REQUEST['rt_post_id'],
         $member['id']
-    ));    
+    ));
     }
 
-// いいね済みなら    
+    // いいね済みなら
 } else {
     // likesテーブルから該当するidをDELETE
     $del = $db->prepare('DELETE FROM likes WHERE id=?');
     $del->execute(array($like_del['id']));
 }
 header('Location: index.php');
-?>

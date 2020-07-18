@@ -11,7 +11,8 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $member = $members->fetch();
 } else {
     // ログインしていない
-    header('Location: login.php'); exit();
+    header('Location: login.php');
+    exit();
 }
 
 // リツイートする投稿の取得
@@ -38,7 +39,7 @@ $retweet_del = $retweets_del->fetch();
 
 // 自分の投稿はリツイートできないように
 if ($post['rt_member_id'] || $post['member_id'] === $member['id']) {
-   header('Location: index.php');
+    header('Location: index.php');
 } else {
 
     // リツイートされていたら
@@ -56,18 +57,17 @@ if ($post['rt_member_id'] || $post['member_id'] === $member['id']) {
             
             // リツイートする
             $retweet = $db->prepare('INSERT INTO posts SET member_id=?, message=?, rt_member_id=?, rt_post_id=?, created=NOW()');
-	        $retweet->execute(array(
-			    $post['member_id'],
+            $retweet->execute(array(
+                $post['member_id'],
                 $post['message'],
                 $member['id'],
                 $_REQUEST['id']
-		        ));
+                ));
             
             // updateでrt_post_idを入れる
             $rt_post_up = $db->prepare('UPDATE posts SET rt_post_id=? WHERE id=?');
             $rt_post_up->execute(array($_REQUEST['id'],$_REQUEST['id']));
             header('Location: index.php');
-        
         } else {
 
             // リツイートする
@@ -81,7 +81,5 @@ if ($post['rt_member_id'] || $post['member_id'] === $member['id']) {
 
             header('Location: index.php');
         }
-    }  
-}     
-
-?>
+    }
+}
