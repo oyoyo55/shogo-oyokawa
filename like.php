@@ -9,6 +9,15 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $members = $db->prepare('SELECT * FROM members WHERE id=?');
     $members->execute(array($_SESSION['id']));
     $member = $members->fetch();
+
+    // memberが見つからなかったら、ログイン画面に戻す
+    if (!isset($member)) {
+        $error['member_id'] = 'blank';
+    }
+    if (!empty($error)) {
+        $_SESSION['member'] = $error['member_id'];
+        header('Location: login.php');
+    }
 } else {
     // ログインしていない
     header('Location: login.php');

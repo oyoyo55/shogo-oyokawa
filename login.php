@@ -4,38 +4,39 @@ require('dbconnect.php');
 session_start();
 
 if ($_COOKIE['email'] != '') {
-	$_POST['email'] = $_COOKIE['email'];
-	$_POST['password'] = $_COOKIE['password'];
-	$_POST['save'] = 'on';
+    $_POST['email'] = $_COOKIE['email'];
+    $_POST['password'] = $_COOKIE['password'];
+    $_POST['save'] = 'on';
 }
 
 if (!empty($_POST)) {
-	// ログインの処理
-	if ($_POST['email'] != '' && $_POST['password'] != '') {
-    $login = $db->prepare('SELECT * FROM members WHERE email=? AND password=?');
-    $login->execute(array(
+    // ログインの処理
+    if ($_POST['email'] != '' && $_POST['password'] != '') {
+        $login = $db->prepare('SELECT * FROM members WHERE email=? AND password=?');
+        $login->execute(array(
       $_POST['email'],
       sha1($_POST['password'])
     ));
-    $member = $login->fetch();
+        $member = $login->fetch();
 
-    if ($member) {
-		// ログイン成功
-		$_SESSION['id'] = $member['id'];
-		$_SESSION['time'] = time();
+        if ($member) {
+            // ログイン成功
+            $_SESSION['id'] = $member['id'];
+            $_SESSION['time'] = time();
 
-		// ログイン情報を記録する
-		if ($_POST['save'] === 'on') {
-			setcookie('email', $_POST['email'], time()+60*60*24*14);
-			setcookie('password', $_POST['password'], time()+60*60*24*14);
-		}
-			header('Location: index.php'); exit();
-		} else {
-			$error['login'] = 'failed';
-		}
-	} else {
-		$error['login'] = 'blank';
-	}
+            // ログイン情報を記録する
+            if ($_POST['save'] === 'on') {
+                setcookie('email', $_POST['email'], time()+60*60*24*14);
+                setcookie('password', $_POST['password'], time()+60*60*24*14);
+            }
+            header('Location: index.php');
+            exit();
+        } else {
+            $error['login'] = 'failed';
+        }
+    } else {
+        $error['login'] = 'blank';
+    }
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -53,6 +54,9 @@ if (!empty($_POST)) {
   </div>
   <div id="content">
     <div id="lead">
+      <?php if ($error['member_id'] === 'blank') : ?>
+      <p class="error">※ メンバー登録が見つかりませんでした。ログイン登録またはログインをやり直してください。<P>
+      <?php endif; ?>
       <p>メールアドレスとパスワードを記入してログインしてください。</p>
       <p>入会手続きがまだの方はこちらからどうぞ。</p>
       <p>&raquo;<a href="join/">入会手続きをする</a></p>
