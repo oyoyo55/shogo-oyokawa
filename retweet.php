@@ -62,7 +62,7 @@ if ($post['rt_member_id'] || $post['member_id'] === $member['id']) {
     } else {
     
         // まだ誰もリツイートしていない投稿の場合
-        if ($post['rt_post_id'] == 0) {
+        if (empty($post['rt_post_id'])) {
             
             // リツイートする
             $retweet = $db->prepare('INSERT INTO posts SET member_id=?, message=?, rt_member_id=?, rt_post_id=?, created=NOW()');

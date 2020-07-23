@@ -50,10 +50,10 @@ $like_del = $likes_del->fetch();
 
 
 // ログインユーザーがいいねしていなかったら
-if ($like_post['cnt'] === 0) {
+if (empty($like_post['cnt'])) {
     
     // リツイートされていなかったら
-    if ($post['rt_post_id'] == 0) {
+    if (empty($post['rt_post_id'])) {
         // likesテーブルにINSERT
         $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
         $likes->execute(array(
