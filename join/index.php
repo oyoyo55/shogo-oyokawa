@@ -2,12 +2,15 @@
 session_start();
 require('../dbconnect.php');
 
+
+
 if (!empty($_POST)) {
+    $email = $_POST['email'];
     // エラー項目の確認
     if ($_POST['name'] === '') {
         $error['name'] = 'blank';
     }
-    if ($_POST['email'] === '') {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error['email'] = 'blank';
     }
     if (strlen($_POST['password']) <4) {
@@ -82,7 +85,7 @@ if ($_REQUEST['action'] === 'rewrite') {
         <dd><input type="text" name="email" size="35" maxlength="255" 
          value="<?php echo htmlspecialchars($_POST['email'], ENT_QUOTES); ?>" />
         <?php if ($error['email'] === 'blank'): ?>
-        <p class="error">* メールアドレスを入力してください</p>
+        <p class="error">* メールアドレスを正しく入力してください</p>
         <?php endif; ?>
         <?php if ($error['email'] === 'duplicate'): ?>
         <p class="error">* 指定されたメールアドレスはすでに登録されています</p>
