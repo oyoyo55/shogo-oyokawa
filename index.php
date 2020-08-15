@@ -24,7 +24,7 @@ if (!empty($_POST)) {
             $_POST['message'],
             $_POST['reply_post_id']
         ));
-        var_dump($message->errorInfo());
+        
         header('Location: index.php');
         exit();
     }
@@ -151,7 +151,7 @@ function makeLink($value)
             <p class="day"><a href="view.php?id=<?php echo h($post['id']); ?>"><?php echo h($post['created']); ?></a></p>
             
             <?php if (in_array($post['id'], $like_post) || in_array($post['rt_post_id'], $like_post)) : ?>
-                <a href="like.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-heart heart_red"></i></a>
+                <a href="like.php?id=<?php echo h($post['id']); ?>"><span class="fas fa-heart heart_red"></span></a>
                 <?php if ($post['rt_member_id'] >0) : ?>
                     <?php if (in_array($post['rt_post_id'], $like_cnt)) : ?>
                         <?php $like_searth = array_search($post['rt_post_id'], $like_cnt) ; ?>
@@ -164,7 +164,7 @@ function makeLink($value)
                     <?php endif; ?>
                 <?php endif; ?>
             <?php else : ?>
-                <a href="like.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
+                <a href="like.php?id=<?php echo h($post['id']); ?>"><span class="fas fa-heart heart_gray"></span></a>
                 <?php if ($post['rt_member_id'] >0) : ?>
                     <?php if (in_array($post['rt_post_id'], $like_cnt)) : ?>
                         <?php $like_searth = array_search($post['rt_post_id'], $like_cnt) ; ?>
@@ -179,7 +179,7 @@ function makeLink($value)
             <?php endif; ?>
             
             <?php if (in_array($post['id'], $retweet_post)|| $post['rt_member_id'] === $member['id']) : ?>
-                <a href="retweet.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
+                <a href="retweet.php?id=<?php echo h($post['id']); ?>"><sapn class="fas fa-retweet retweet_orange"></span></a>
                 <?php if ($post['rt_member_id'] >0) : ?>
                     <?php if (in_array($post['rt_post_id'], $retweet_cnt)) : ?>
                         <?php $rt_searcth = array_search($post['rt_post_id'], $retweet_cnt); ?>
@@ -192,7 +192,7 @@ function makeLink($value)
                     <?php endif; ?>
                 <?php endif; ?>    
             <?php else : ?>
-                <a href="retweet.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
+                <a href="retweet.php?id=<?php echo h($post['id']); ?>"><span class="fas fa-retweet retweet_gray"></span></a>
                 <?php if ($post['rt_member_id'] >0) : ?>
                     <?php if (in_array($post['rt_post_id'], $retweet_cnt)) : ?>
                         <?php $rt_searcth = array_search($post['rt_post_id'], $retweet_cnt); ?>
