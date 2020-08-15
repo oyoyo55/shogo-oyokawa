@@ -9,9 +9,8 @@ if (!isset($_SESSION['join'])) {
 
 if (!empty($_POST)) {
     // 登録処理をする
-    $statement = $db->prepare('INSERT INTO members SET name=?, email=?, password=?, 
-    picture=?, created=NOW()');
-    echo $ret = $statement->execute(array(
+    $statement = $db->prepare('INSERT INTO members SET name=?, email=?, password=?, picture=?, created=NOW()');
+    $statement->execute(array(
         $_SESSION['join']['name'],
         $_SESSION['join']['email'],
         sha1($_SESSION['join']['password']),
