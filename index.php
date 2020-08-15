@@ -24,7 +24,7 @@ if (!empty($_POST)) {
             $_POST['message'],
             $_POST['reply_post_id']
         ));
-
+        var_dump($message->errorInfo());
         header('Location: index.php');
         exit();
     }
@@ -42,7 +42,8 @@ $page = min($page, $maxPage);
 
 $start = ($page - 1) * 5;
 
-$posts = $db->prepare('SELECT m.name, m.picture, p. * FROM members m, posts p WHERE m.id=p.member_id ORDER BY p.created DESC LIMIT ?, 5');
+$posts = $db->prepare('SELECT m.name, m.picture, p. * FROM members m,posts p 
+WHERE m.id=p.member_id ORDER BY p.created DESC LIMIT ?, 5');
 $posts->bindParam(1, $start, PDO::PARAM_INT);
 $posts->execute();
 
@@ -55,32 +56,35 @@ if (isset($_REQUEST['res'])) {
     $message = '@' . $table['name'] . ' ' . $table['message'];
 }
 
-// ログインユーザーがいいねしたpost_idを取得
+// ログインユーザーがいいねしたpost_idを取得している
 $likes = $db->prepare('SELECT * FROM likes WHERE member_id=?');
 $likes->execute(array($_SESSION['id']));
 $like = $likes->fetchall();
 $like_post = array_column($like, 'post_id');
 
-// いいね数をカウント
+// いいねの数をカウント
 $likes_id = $db->query('SELECT post_id, COUNT(*) AS cnt FROM likes GROUP BY post_id ORDER BY post_id DESC');
 $like_id = $likes_id->fetchall();
 $like_cnt = array_column($like_id, 'post_id');
 
-//ログインユーザーがリツイートした投稿を取得する
+//　ログインユーザーがリツイートした投稿を取得する
 $retweets = $db->prepare('SELECT * FROM posts WHERE rt_member_id=? AND rt_post_id>0');
 $retweets->execute(array($_SESSION['id']));
 $retweet = $retweets->fetchall();
 $retweet_post = array_column($retweet, 'rt_post_id');
 
-// リツイート数をカウント
+// リツイートの数をカウント
 $retweets_id = $db->query('SELECT rt_post_id, COUNT(*) AS cnt FROM posts WHERE rt_member_id>0 AND rt_post_id>0 GROUP BY rt_post_id ORDER BY rt_post_id DESC');
 $retweet_id = $retweets_id->fetchall();
 $retweet_cnt = array_column($retweet_id, 'rt_post_id');
 
-// リツイートしたmember_id取得
+// メンバーidの取得
+
 $rt_members = $db->query('SELECT * FROM members');
 $rt_member = $rt_members->fetchall();
 $rt_member_id = array_column($rt_member, 'id');
+
+print_r($rt_member_name);
 
 // htmlspecialcharsのショートカット
 function h($value)
@@ -93,7 +97,6 @@ function makeLink($value)
 {
     return mb_ereg_replace("(https?)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\1\2">\1\2</a>', $value);
 }
-
 ?>
 
 <!doctype html>
@@ -111,95 +114,143 @@ function makeLink($value)
 </head>
 <body>
 <div id="wrap">
+
     <div id="head">
         <h1>ひとこと掲示板</h1>
     </div>    
     <div id="content">
         <div style="text-align: right"><a href="logout.php">ログアウト</a></div>
 		<form action="" method="post">
-		    <dl>
-			    <dt><?php echo h($member['name']); ?>さん、メッセージをどうぞ</dt>
-		    <dd>
-		        <textarea name="message" cols="50" rows="5"><?php echo h($message); ?></textarea>
-		        <input type="hidden" name="reply_post_id" value="<?php echo h($_REQUEST['res']); ?>" />
-		    </dd>
-		    </dl>
-		    <div>
-		        <input type="submit" value="投稿する" />
-		    </div>
+		<dl>
+			<dt><?php echo h($member['name']); ?>さん、メッセージをどうぞ</dt>
+		<dd>
+		<textarea name="message" cols="50" rows="5"><?php echo h($message); ?></textarea>
+		<input type="hidden" name="reply_post_id" value="<?php echo h($_REQUEST['res']); ?>" />
+		</dd>
+		</dl>
+		<div>
+		<input type="submit" value="投稿する" />
+		</div>
 		</form>
 
         <?php foreach ($posts as $post): ?>
-            
-        
         
 		<div class="msg">
-
-            <!-- リツイートされた投稿であれば、rt_memberを表示 -->
-            <?php if ($post['rt_post_id'] >0 && $post['rt_member_id'] >0) : ?>
-                <p class="rt_member_name"><i class="fas fa-retweet retweet"></i>
-                <?php if (in_array($post['rt_member_id'], $rt_member_id)) : ?>
-                    <?php $rt_name_searth = array_search($post['rt_member_id'], $rt_member_id); ?>
-                    <?php print($rt_member[$rt_name_searth]['name']); ?>
-                <?php endif; ?>
-                さんがリツイート</p>
-            <?php endif; ?>
+        
+        <?php if ($post['rt_post_id'] >0 && $post['rt_member_id'] >0) : ?>
+            <p class="rt_member_name"><i class="fas fa-retweet retweet"></i><?php if (in_array($post['rt_member_id'], $rt_member_id)) : ?>
+                <?php $rt_name_searth = array_search($post['rt_member_id'], $rt_member_id); ?>
+                <?php print($rt_member[$rt_name_searth]['name']); ?>
+            <?php endif; ?>さんがリツイート</p>
+            
+        <?php endif; ?>
 
 			<img src="member_picture/<?php echo h($post['picture']); ?>" width="48" height="48" alt="<?php echo h($post['name']); ?>" />
 			<p><?php echo makeLink(h($post['message']));?><span class="name">（<?php echo h($post['name']); ?>）</span>
-            [<a href="index.php?res=<?php echo h($post['id']); ?>">Re</a>]</p>
+      [<a href="index.php?res=<?php echo h($post['id']); ?>">Re</a>]</p>
             <p class="day"><a href="view.php?id=<?php echo h($post['id']); ?>"><?php echo h($post['created']); ?></a></p>
-
-            <!-- いいねボタン -->
-            <!-- ログインユーザーがいいね済みなら色を赤色に -->
-            <?php if ($member['id'] === $like['member_id']) : ?>
+            
+            <?php if (in_array($post['id'], $like_post) || in_array($post['rt_post_id'], $like_post)) : ?>
                 <a href="like.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-heart heart_red"></i></a>
+                <?php if ($post['rt_member_id'] >0) : ?>
+                    <?php if (in_array($post['rt_post_id'], $like_cnt)) : ?>
+                        <?php $like_searth = array_search($post['rt_post_id'], $like_cnt) ; ?>
+                        <?php print($like_id[$like_searth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php else : ?>    
+                    <?php if (in_array($post['id'], $like_cnt)) : ?>
+                        <?php $like_searth = array_search($post['id'], $like_cnt) ; ?>
+                        <?php print($like_id[$like_searth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
             <?php else : ?>
                 <a href="like.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-heart heart_gray"></i></a>
+                <?php if ($post['rt_member_id'] >0) : ?>
+                    <?php if (in_array($post['rt_post_id'], $like_cnt)) : ?>
+                        <?php $like_searth = array_search($post['rt_post_id'], $like_cnt) ; ?>
+                        <?php print($like_id[$like_searth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php else : ?>    
+                    <?php if (in_array($post['id'], $like_cnt)) : ?>
+                        <?php $like_searth = array_search($post['id'], $like_cnt) ; ?>
+                        <?php print($like_id[$like_searth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php endif; ?>
             <?php endif; ?>
             
-            <!-- いいね数を表示 -->
-            <?php print($like_cnt['cnt']); ?>
-           
-            <!-- リツイートボタン -->
-            <!-- ログインユーザーがリツイート済みなら色をオレンジに -->
-            <?php if ($post['rt_member_id'] === $member['id'] || $rt_record['cnt'] >0) : ?>
+            <?php if (in_array($post['id'], $retweet_post)|| $post['rt_member_id'] === $member['id']) : ?>
                 <a href="retweet.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-retweet retweet_orange"></i></a>
+                <?php if ($post['rt_member_id'] >0) : ?>
+                    <?php if (in_array($post['rt_post_id'], $retweet_cnt)) : ?>
+                        <?php $rt_searcth = array_search($post['rt_post_id'], $retweet_cnt); ?>
+                        <?php print($retweet_id[$rt_searcth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <?php if (in_array($post['id'], $retweet_cnt)) : ?>
+                        <?php $rt_searcth = array_search($post['id'], $retweet_cnt); ?>
+                        <?php print($retweet_id[$rt_searcth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php endif; ?>    
             <?php else : ?>
                 <a href="retweet.php?id=<?php echo h($post['id']); ?>"><i class="fas fa-retweet retweet_gray"></i></a>
-            <?php endif; ?>
-
-            <!-- リツイート数を表示 -->
-            <?php print($rt_cnt['cnt']); ?>
-            
-            <!-- 返信メッセージurl -->
-            <!-- 返信メッセージがあればurlを表示 -->
-            <?php if ($post['reply_post_id'] > 0) : ?>
-                <a href="view.php?id=<?php echo h($post['reply_post_id']); ?>">返信元のメッセージ</a>
-            <?php endif; ?>
-
-            <!-- ログインユーザーであれば削除ボタン表示 -->
-            <?php if ($_SESSION['id'] === $post['member_id']): ?>
-                [<a href="delete.php?id=<?php echo h($post['id']); ?>" style="color:#F33;">削除</a>]
+                <?php if ($post['rt_member_id'] >0) : ?>
+                    <?php if (in_array($post['rt_post_id'], $retweet_cnt)) : ?>
+                        <?php $rt_searcth = array_search($post['rt_post_id'], $retweet_cnt); ?>
+                        <?php print($retweet_id[$rt_searcth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <?php if (in_array($post['id'], $retweet_cnt)) : ?>
+                        <?php $rt_searcth = array_search($post['id'], $retweet_cnt); ?>
+                        <?php print($retweet_id[$rt_searcth]['cnt']); ?>
+                    <?php endif; ?>
+                <?php endif; ?>    
             <?php endif; ?>    
-		</div>
 
-		<?php endforeach; ?>
+            <?php
+            if ($post['reply_post_id'] > 0):
+            ?>
+            <a href="view.php?id=<?php echo h($post['reply_post_id']); ?>">
+            返信元のメッセージ</a>
+            <?php
+            endif;
+            ?>
+            <?php
+            if ($_SESSION['id'] === $post['member_id']):
+            ?>
+                [<a href="delete.php?id=<?php echo h($post['id']); ?>" style="color:#F33;">削除</a>]
+            <?php
+            endif;
+            ?>    
+		</div>
+		
+        <?php endforeach; ?>
         
         <ul class="paging">
-            <?php if ($page > 1) { ?>
-                <li><a href="index.php?page=<?php print($page - 1); ?>">前のページへ</a></li>
-            <?php } else { ?>
-                <li>前のページへ</li>
-            <?php } ?>
-
-            <?php if ($page < $maxPage) { ?>
-                <li><a href="index.php?page=<?php print($page + 1); ?>">次のページへ</a></li>
-            <?php } else { ?>
-                <li>次のページへ</li>
-            <?php } ?>
+        <?php
+        if ($page > 1) {
+            ?>
+        <li><a href="index.php?page=<?php print($page - 1); ?>">前のページへ</a></li>
+        <?php
+        } else {
+            ?>
+        <li>前のページへ</li>
+        <?php
+        }
+        ?>
+        <?php
+        if ($page < $maxPage) {
+            ?>
+        <li><a href="index.php?page=<?php print($page + 1); ?>">次のページへ</a></li>
+        <?php
+        } else {
+            ?>
+        <li>次のページへ</li>
+        <?php
+        }
+        ?>
         </ul>
+      </div>
     </div>  
-</div>
+    </div>
 </body>    
 </html>

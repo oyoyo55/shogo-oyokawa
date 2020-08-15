@@ -9,7 +9,7 @@ if (isset($_SESSION['id']) && $_SESSION['time'] + 3600 > time()) {
     $members = $db->prepare('SELECT * FROM members WHERE id=?');
     $members->execute(array($_SESSION['id']));
     $member = $members->fetch();
-
+    
     // memberが見つからなかったら、ログイン画面に戻す
     if (!isset($member)) {
         $error['member_id'] = 'blank';
@@ -29,17 +29,17 @@ $posts = $db->prepare('SELECT * FROM posts WHERE id=?');
 $posts->execute(array($_REQUEST['id']));
 $post = $posts->fetch();
 
-// ログインユーザーがいいねしているか判断するために
-// likesテーブルからログインユーザーとpostのパラメータが一緒のデータを取得
-$like_posts = $db->prepare('SELECT COUNT(*) AS cnt FROM likes WHERE (post_id=? OR post_id=?) AND member_id=?');
-$like_posts->execute(array(
+// ログインユーザがいいねしているか判断するために
+// likesテーブルからログインユーザーとpostのパラメーターが一緒のデータを取得
+$like_post = $db->prepare('SELECT COUNT(*) AS cnt FROM likes WHERE (post_id=? OR post_id=?) AND member_id=?');
+$like_post->execute(array(
     $_REQUEST['id'],
     $post['rt_post_id'],
     $member['id']
 ));
-$like_post = $like_posts->fetch();
+$record = $like_post->fetch();
 
-// いいねを取り消すためのidを取得
+// いいねを取り消すためのIDを取得
 $likes_del = $db->prepare('SELECT * FROM likes WHERE (post_id=? OR post_id=?) AND member_id=?');
 $likes_del->execute(array(
     $_REQUEST['id'],
@@ -48,30 +48,29 @@ $likes_del->execute(array(
 ));
 $like_del = $likes_del->fetch();
 
-
 // ログインユーザーがいいねしていなかったら
-if (empty($like_post['cnt'])) {
-    
+if ((int)$record['cnt'] === 0) {
+
     // リツイートされていなかったら
-    if (empty($post['rt_post_id'])) {
-        // likesテーブルにINSERT
+    if ((int)$post['rt_post_id'] === 0) {
         $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
         $likes->execute(array(
-        $_REQUEST['id'],
-        $member['id']
-    ));
+            $_REQUEST['id'],
+            $member['id']
+        ));
     } else {
-        $likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
-        $likes->execute(array(
-        $_REQUEST['rt_post_id'],
-        $member['id']
-    ));
+        $rt_likes = $db->prepare('INSERT INTO likes SET post_id=?, member_id=?');
+        $rt_likes->execute(array(
+            $post['rt_post_id'],
+            $member['id']
+        ));
     }
 
     // いいね済みなら
 } else {
-    // likesテーブルから該当するidをDELETE
+    // likesテーブルから該当するIDをDELETE
     $del = $db->prepare('DELETE FROM likes WHERE id=?');
     $del->execute(array($like_del['id']));
 }
+
 header('Location: index.php');
